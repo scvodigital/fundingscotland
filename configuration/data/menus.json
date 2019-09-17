@@ -1,0 +1,60 @@
+{
+  "user-signed-in": [
+    {
+      "label": "Home",
+      "icon": "home",
+      "path": "/",
+      "route": "^/$"
+    },
+    {
+      "label": "My searches & alerts",
+      "icon": "search-plus",
+      "path": "/searches",
+      "route": "^/searches"
+    },
+    {
+      "label": "My lists & updates",
+      "icon": "tasks",
+      "path": "/lists",
+      "route": "^/lists"
+    },
+    {
+      "label": "My notes",
+      "icon": "edit",
+      "path": "/notes",
+      "route": "^/notes"
+    },
+    {
+      "label": "My hidden funds",
+      "icon": "eye-slash",
+      "path": "/hidden-funds",
+      "route": "^/hidden-funds"
+    },
+    {
+      "label": "Settings",
+      "icon": "cog",
+      "path": "/settings",
+      "route": "^/settings"
+    },
+    {
+      "label": "Sign out",
+      "icon": "sign-out-alt",
+      "path": "/sign-out",
+      "route": "^/sign-out"
+    }
+  ],
+  "user-not-signed-in": [
+    {
+      "label": "Sign in",
+      "icon": "sign-in-alt",
+      "path": "/sign-in",
+      "route": "^/sign-in"
+    },
+    {
+      "label": "Sign up",
+      "icon": "list-alt",
+      "path": "/sign-up",
+      "route": "^/sign-up"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "name": "fund_pdf",
+  "pattern": "/fund-pdf/:id",
+  "debug": false,
+  "metaData": {
+    "pdf": {
+      "title": ">data.currentSite.title",
+      "subtitle": ">data.search_data.detailed_results.hits.hits.0._source.title"
+    }
+  },
+  "tasks": [
+    "context.metaData.commonTasks.currentSite",
+    "context.metaData.commonTasks.authNotRequired",
+    "context.metaData.commonTasks.profileData",
+    "context.metaData.commonTasks.bulletinName",
+    {
+      "name": "search_data",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../data/elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6",
+          "log": "debug"
+        },
+        "queryTemplates": [
+          {
+            "name": "detailed_results",
+            "index": "{$../data/elasticsearch-index.txt}",
+            "type": "fs-fund",
+            "template": ">context.metaData.handlebars.queries.funds_fund"
+          }
+        ]
+      },
+      "renderer": "handlebars"
+    },
+    {
+    "name": "destination",
+    "taskModule": "generatePdf",
+    "renderer": "handlebars",
+    "config": {
+      "imagesTemplate": "{ \"logo\": {{{stringify (default @root.data.currentSite.logo '')}}} }",
+      "definitionTemplate": ">context.metaData.handlebars.templates.funds_list-pdf-definition",
+      "headerTemplate": ">context.metaData.handlebars.templates.funds_list-pdf-header",
+      "footerTemplate": ">context.metaData.handlebars.templates.funds_list-pdf-footer"
+    }
+  }]
+}

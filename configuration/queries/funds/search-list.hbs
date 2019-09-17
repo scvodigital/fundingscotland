@@ -1,0 +1,164 @@
+{{#json}}
+  {{#if @root.request.params.query.pdf}}
+    {{{json key="size" value=200}}},
+  {{else}}
+    {{{json key="size" value=10}}},
+    {{#withExtend (obj) page=(default (num @root.request.params.query.page) 1)}}
+      {{#compare page ">" 1}}
+        {{{json key="from" value=(multiply (subtract (if (compare page ">" 20) 20 else=page) 1) 10)}}},
+      {{/compare}}
+    {{/withExtend}}
+  {{/if}}
+  {{#json key="_source" type="array"}}
+    "region_group_slug",
+    "title",
+    "region_group",
+    "description",
+    "activities_slugs",
+    "fund_status_slug",
+    "funder_organisation.name",
+    "date_reopens",
+    "Id",
+    "beneficiaries",
+    "beneficiaries_slugs",
+    "type_of_funding",
+    "activities",
+    "type_of_cost",
+    "text_bag_boost",
+    "fund_status",
+    "funder_organisation.id",
+    "funder_organisation.slug",
+    "source_of_fund",
+    "slug",
+    {{#if @root.request.params.query.pdf}}
+      "funder_organisation.charity_number",
+      "award_size_max",
+      "fund_url",
+      "annual_income_max",
+      "award_size_avg",
+      "rendered.json_ld",
+      "also_funds_individuals",
+      "funder_organisation.twitter",
+      "funder_organisation.website",
+      "fund_email_address",
+      "currency_sign",
+      "applicant_success_rate",
+      "charities_only",
+      "date_last_modified",
+      "award_size_min",
+      "when_to_apply",
+      "geographical_areas_funded",
+      "annual_income_min",
+      "fund_telephone",
+      "who_can_apply",
+      "annual_total",
+      "date_due_to_open",
+      "how_to_apply",
+      "funder_organisation.facebook",
+      "notes_on_award_amounts",
+      "funder_organisation.address",
+      "funder_organisation.email",
+      "summary",
+      "next_deadline",
+      "funder_organisation.telephone",
+      "fund_exclusion",
+      "geographical_areas_funded_slugs",
+      "date_last_checked",
+      "funder_organisation.linkedin"
+    {{else}}
+      "funder_organisation.logo_url",
+      "for_charities_only",
+      "funder_organisation.has_logo",
+      "rendered.fundingscotland_rss"
+    {{/if}}
+  {{/json}},
+  {{#json key="query"}}
+    {{#>queries_fund_common}}
+      {{#json key="bool"}}
+        {{#json key="filter" type="array"}}
+          {{>queries_fund_search_filters @root.request.params.query}}
+        {{/json}},
+        {{#json key="must" type="array"}}
+          {{>queries_fund_search_must @root.request.params.query}}
+        {{/json}},
+        {{#if (contains @root.request.params.query.miscellaneous "hide-open-funds") ~}}
+          {{#json key="must_not" type="array"}}
+            {{>queries_term field="fund_status_slug" term="open"}}
+          {{/json}},
+        {{/if ~}}
+        {{#json key="should" type="array"}}
+          {{#unless (contains @root.request.params.query.miscellaneous "hide-open-funds") ~}}
+            {{>queries_term field="fund_status_slug" term="open"}},
+          {{/unless ~}}
+          {{!-- {{#if (contains @root.request.params.query.miscellaneous "show-opening-soon-funds")}} --}}
+            {{#json}}
+              {{#json key="bool"}}
+                {{#json key="filter" type="array"}}
+                  {{>queries_term field="fund_status_slug" term="currently-closed"}}
+                {{/json}},
+                {{#json key="must" type="array"}}
+                  {{>queries_date_range field="date_reopens" gte="now/d" lte=@root.context.metaData.openingSoonDate}}
+                {{/json}}
+              {{/json}}
+            {{/json}},
+          {{!-- {{/if}} --}}
+          {{#if (contains @root.request.params.query.miscellaneous "show-closed-funds")}}
+            {{#json}}
+              {{#json key="bool"}}
+                {{#json key="filter" type="array"}}
+                  {{>queries_term field="fund_status_slug" term="currently-closed"}}
+                {{/json}},
+                {{#json key="must_not" type="array"}}
+                  {{>queries_date_range field="date_reopens" gte="now/d" lte=@root.context.metaData.openingSoonDate}}
+                {{/json}}
+              {{/json}}
+            {{/json}},
+          {{/if}}
+        {{/json}},
+        {{{json key="minimum_should_match" value=1}}}
+      {{/json}}
+    {{/queries_fund_common}}
+  {{/json}},
+  {{#json key="sort" type="array"}}
+    {{#switch @root.request.params.query.sort}}
+      {{#case "max_funded_asc"}}
+        {{#json}}
+          {{{json key="award_size_max" value="asc"}}}
+        {{/json}}
+      {{/case}}
+      {{#case "max_funded_desc" ~}}
+        {{#json}}
+          {{{json key="award_size_max" value="desc"}}}
+        {{/json}}
+      {{/case}}
+      {{#case "deadline_date_asc" ~}}
+        {{#json}}
+          {{{json key="next_deadline" value="asc"}}}
+        {{/json}}
+      {{/case}}
+      {{#case "deadline_date_desc" ~}}
+        {{#json}}
+          {{{json key="next_deadline" value="desc"}}}
+        {{/json}}
+      {{/case}}
+      {{#case "alphabetical_asc" ~}}
+        {{#json}}
+          {{{json key="name" value="asc"}}}
+        {{/json}}
+      {{/case}}
+      {{#case "alphabetical_desc" ~}}
+        {{#json}}
+          {{{json key="name" value="desc"}}}
+        {{/json}}
+      {{/case}}
+      {{#case "date_last_reviewed" ~}}
+        {{#json}}
+          {{{json key="date_last_modified" value="desc"}}}
+        {{/json}}
+      {{/case}}
+      {{#switchDefault}}
+        "_score"
+      {{/switchDefault ~}}
+    {{/switch}}
+  {{/json}}
+{{/json}}

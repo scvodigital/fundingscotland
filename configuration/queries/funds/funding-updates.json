@@ -1,0 +1,45 @@
+{
+  "size": 1000,
+  "_source": [
+    "Id",
+    "slug",
+    "title",
+    "text_bag_boost",
+    "fund_status",
+    "fund_status_slug",
+    "news",
+    "date_news_last_updated",
+    "description",
+    "date_reopens",
+    "next_deadline",
+    "currency_sign",
+    "award_size_max",
+    "funder_organisation.id",
+    "funder_organisation.slug",
+    "funder_organisation.name",
+    "funder_organisation.has_logo",
+    "funder_organisation.logo_url"
+  ],
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "range": {
+            "date_last_important_activity": {
+              "gte": "{{firstItem (split (atob request.params.range) '-')}}",
+              "lte": "{{lastItem (split (atob request.params.range) '-')}}"
+            }
+          }
+        },
+        {
+          "terms": {
+            "fund_status_slug": [ "open" ]
+          }
+        }
+      ]
+    }
+  },
+  "sort": {
+    "date_last_important_activity": "desc"
+  }
+}

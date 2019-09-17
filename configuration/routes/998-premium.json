@@ -1,0 +1,55 @@
+{
+  "name": "premium",
+  "pattern": "/premium",
+  "debug": false,
+  "metaData": {
+    "hideSearch": true
+  },
+  "tasks": [
+    "context.metaData.commonTasks.currentSite",
+    "context.metaData.commonTasks.authNotRequired",
+    "context.metaData.commonTasks.profileData",
+    "context.metaData.commonTasks.bulletinName",
+    "context.metaData.commonTasks.menus",
+    {
+      "name": "primaryResponse",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../data/elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": {
+          "index": "{$../data/elasticsearch-index.txt}",
+          "type": "fs-page-default",
+          "template": ">context.metaData.handlebars.queries.pages_page"
+        }
+      },
+      "renderer": "handlebars"
+    },
+    "context.metaData.commonTasks.supplimentaryResponses",
+    {
+      "name": "destination",
+      "taskModule": "renderLayout",
+      "renderer": "handlebars",
+      "config": {
+        "logic": {
+          "if": [
+            "default"
+          ]
+        },
+        "output": "body",
+        "layouts": {
+          "default": {
+            "layout": ">context.metaData.handlebars.layouts.default",
+            "parts": {
+              "head": ">context.metaData.handlebars.templates.pages_page-head-tags",
+              "body": ">context.metaData.handlebars.templates.pages_premium"
+            },
+            "contentType": "text/html"
+          }
+        }
+      }
+    }
+  ]
+}

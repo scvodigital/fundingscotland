@@ -1,0 +1,38 @@
+{
+  "name": "premium_toggle",
+  "pattern": "/premium-toggle",
+  "debug": false,
+  "tasks": [
+    "context.metaData.commonTasks.currentSite",
+    "context.metaData.commonTasks.authRequired",
+    "context.metaData.commonTasks.profileData",
+    "context.metaData.commonTasks.bulletinName",
+    {
+      "name": "togglePremium",
+      "taskModule": "firebaseRtbSet",
+      "renderer": "handlebars",
+      "config": {
+        "appName": "fundingscotland",
+        "pathTemplate": "/users/{{default data.auth.uid 'no-such-profile'}}/{{@root.data.currentSite.name}}/isPremium",
+        "setOrUpdate": "set",
+        "dataTemplate": "{{#>premium_content}}false{{/premium_content}}{{#>premium_content_alt}}{{dateMath 'now+1y'}}{{/premium_content_alt}}"
+      }
+    },
+    {
+      "name": "url",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "data",
+        "template": "{{{default @root.request.headers.referer '/'}}}"
+      }
+    },
+    {
+      "name": "destination",
+      "taskModule": "redirect",
+      "config": {
+        "location": ">data.url"
+      }
+    }
+  ]
+}

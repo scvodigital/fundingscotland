@@ -1,0 +1,11 @@
+{{~#each @root.context.metaData.terms~}}
+  {{~#compare key ../field~}}
+    {{~#each termGroups~}}
+      {{~#each terms~}}
+        {{~#compare key ../../../term}}
+          {{label}}
+        {{~/compare~}}
+      {{~/each~}}
+    {{~/each~}}
+  {{~/compare~}}
+{{~/each~}}

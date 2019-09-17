@@ -1,0 +1,14 @@
+<div class="mdc-card gist" data-fund-id="{{Id}}">
+  <div class="mdc-card__info--content-primary-row">
+    <div class="mdc-card__media mdc-card__media--square demo-card__media search-result-card__media--funder" style="background-image:url({{funder_organisation.logo_url}});"></div>
+    <div class="mdc-card__info--content-primary">
+      <div class="mdc-card__info--content-primary-title mdc-typography--headline7">
+        {{{title}}}
+      </div>
+      <div class="mdc-card__info--content-primary-funder mdc-typography--body1">
+        <a href="/funder/{{funder.slug}}{{> query_search}}">{{funder.name}}</a>
+      </div>
+    </div>
+  </div>
+  {{> fund_actions slug=slug Id=Id actions=actions}}
+</div>

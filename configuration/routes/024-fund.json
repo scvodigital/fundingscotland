@@ -1,0 +1,127 @@
+{
+  "name": "fund",
+  "debug": false,
+  "pattern": "/fund/:id(/:junk)",
+  "defaultParams": {
+    "context": "detail"
+  },
+  "tasks": [
+    "context.metaData.commonTasks.currentSite",
+    "context.metaData.commonTasks.authNotRequired",
+    "context.metaData.commonTasks.profileData",
+    "context.metaData.commonTasks.bulletinName",
+    "context.metaData.commonTasks.menus",
+    "context.metaData.commonTasks.shortlistData",
+    {
+      "name": "md",
+      "taskModule": "render",
+      "config": {
+        "template": ">context.metaData.handlebars.templates.md",
+        "output": "data"
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "shortlistPartitions",
+      "taskModule": "mysql",
+      "config": {
+        "connectionName": "notifications",
+        "queryTemplates": {
+          "items": ">context.metaData.handlebars.queries.notifications_get-shortlist-partitions"
+        }
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "primaryResponse",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../data/elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": {
+          "index": "{$../data/elasticsearch-index.txt}",
+          "type": "fs-fund",
+          "template": ">context.metaData.handlebars.queries.funds_fund"
+        }
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "supplimentaryResponses",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../data/elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": [
+          {
+            "name": "types",
+            "index": "{$../data/elasticsearch-index.txt}",
+            "type": "fs-fund",
+            "template": ">context.metaData.handlebars.queries.funds_types"
+          },
+          {
+            "name": "related",
+            "index": "{$../data/elasticsearch-index.txt}",
+            "type": "fs-fund",
+            "template": ">context.metaData.handlebars.queries.funds_related"
+          },
+          {
+            "name": "not_found",
+            "index": "{$../data/elasticsearch-index.txt}",
+            "type": "fs-fund",
+            "template": ">context.metaData.handlebars.queries.pages_not-found"
+          }
+        ]
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "posts",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../data/elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": [
+          {
+            "name": "tfn_latest",
+            "index": "{$../data/elasticsearch-index.txt}",
+            "type": "tfn-legacy-post-news,tfn-legacy-feature",
+            "template": ">context.metaData.handlebars.queries.posts_latest"
+          }
+        ]
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "destination",
+      "taskModule": "renderLayout",
+      "renderer": "handlebars",
+      "config": {
+        "logic": {
+          "if": [
+            "default"
+          ]
+        },
+        "output": "body",
+        "layouts": {
+          "default": {
+            "layout": ">context.metaData.handlebars.layouts.default",
+            "parts": {
+              "head": ">context.metaData.handlebars.templates.funds_fund-head-tags",
+              "sidebar": ">context.metaData.handlebars.templates.funds_search-form",
+              "body": ">context.metaData.handlebars.templates.funds_fund",
+              "foot": ">context.metaData.handlebars.templates.funds_fund-foot"
+            },
+            "contentType": "text/html"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "delete_note",
+  "pattern": "/delete-note",
+  "debug": false,
+  "acceptedVerbs": "POST",
+  "tasks": [
+    "context.metaData.commonTasks.currentSite",
+    "context.metaData.commonTasks.authRequired",
+    {
+      "name": "notes",
+      "taskModule": "firebaseRtbSet",
+      "renderer": "handlebars",
+      "config": {
+        "appName": "fundingscotland",
+        "pathTemplate": "/users/{{default data.auth.uid 'no-such-profile'}}/{{data.currentSite.name}}/notes/{{request.body.fundId}}/{{request.body.noteId}}",
+        "setOrUpdate": "set",
+        "dataTemplate": "null"
+      }
+    },
+    {
+      "name": "destination",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "body",
+        "template": "{ \"fundId\": {{{stringify request.body.fundId}}}, \"noteId\": {{{stringify request.body.noteId}}} }",
+        "parseJson": true
+      }
+    }
+  ]
+}

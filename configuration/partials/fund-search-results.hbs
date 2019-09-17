@@ -1,0 +1,218 @@
+{{#withExtend this savedSearch=(if
+  @root.data.auth
+  (itemAt
+    @root.data.searches.items.[0]
+    (indexOf
+      (pluck @root.data.searches.items.[0] "querystring")
+      (querystringify (obj)
+        keywords=@root.request.params.query.keywords
+        activities=(sort @root.request.params.query.activities)
+        beneficiaries=(sort @root.request.params.query.beneficiaries)
+        geographical_areas_funded=(sort @root.request.params.query.geographical_areas_funded)
+        type_of_cost=(sort @root.request.params.query.type_of_cost)
+        type_of_funding=(sort @root.request.params.query.type_of_funding)
+        source_of_fund=(sort @root.request.params.query.source_of_fund)
+        miscellaneous=(sort @root.request.params.query.miscellaneous)
+      )
+    )
+  )
+  else=false
+)}}
+{{>localised_site_banner @root.request.params.querystring}}
+
+{{#if savedSearch}}
+  <h3 class="mdc-typography--headline6">
+    <div class="pull-right">
+      {{#> ajax_chip
+        onUrl=(concat "/toggle-subscription?name=" (urlencode savedSearch.partition))
+        offUrl=(concat "/toggle-subscription?name=" (urlencode savedSearch.partition))
+        onText="Disable email updates on this search"
+        offText="Get email updates on this search"
+        iconClasses="fal fa-fw fa-times"
+        on=savedSearch.partitionActive
+      }}
+      {
+        "extraAttributes": "data-saved-search-name=\"{{../savedSearch.partition}}\"",
+        "onClasses": {
+          "[data-saved-search-name=\"{{../savedSearch.partition}}\"] .mdc-chip__icon": "mdc-chip__icon--leading-hidden"
+        },
+        "offClasses": {
+          "[data-saved-search-name=\"{{../savedSearch.partition}}\"]": ""
+        }
+      }
+      {{/ajax_chip}}
+    </div>
+    Your search&ensp;
+    <span class="mdc-typography--body1">
+      {{{savedSearch.partition}}}
+    </span>
+  </h3>
+{{/if}}
+
+{{> search_info paging=@root.data.search_data.detailed_results.pagination}}
+
+{{#>premium_content}}
+  {{#unless savedSearch}}
+  <aside id="save-search-dialog" class="mdc-dialog" role="alertdialog" aria-labelledby="save-search-dialog-label" aria-describedby="save-search-dialog-description">
+    <div class="mdc-dialog__container">
+      <form action="/save-search{{> query_search}}" method="GET" class="mdc-dialog__surface">
+        <header class="mdc-dialog__header">
+          <h2 id="save-search-dialog-label" class="mdc-dialog__title">Give your search a name</h2>
+        </header>
+        <section id="save-search-dialog-description" class="mdc-dialog__content">
+          <p>
+            Search names may only contain letters, numbers, spaces, and the following special characters:
+            <span class="inline-pre">- _ , .</span>
+          </p>
+
+          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+            <input type="text" id="saved-search-name" name="name" class="mdc-text-field__input"
+                value="" maxlength="255" data-restricted="[\w\d\s\-_.,]+">
+            <label for="saved-search-name" class="mdc-floating-label">Save search</label>
+            <div class="mdc-line-ripple"></div>
+          </div>
+          <div class="mdc-form-field">
+            <div class="mdc-checkbox">
+              <input type="checkbox" class="mdc-checkbox__native-control" name="subscribe" id="email-on" />
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+            </div>
+            <label for="email-on">Send email alerts for new funds matching this search</label>
+          </div>
+          {{#if @root.request.params.query.keywords}}
+            <input type="hidden" name="keywords" value="{{@root.request.params.query.keywords}}">
+          {{/if}}
+          {{#each (split "activities,beneficiaries,geographical_areas_funded,type_of_cost,type_of_funding,source_of_fund,miscellaneous" ",")}}
+            {{#if (getProperty @root.request.params.query this)}}
+              {{#each (arrayify (getProperty @root.request.params.query this))}}
+                <input type="hidden" name="{{../this}}" value="{{this}}">
+              {{/each}}
+            {{/if}}
+          {{/each}}
+        </section>
+        <footer class="mdc-dialog__actions">
+          <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close">Cancel</button>
+          <button type="submit" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="accept">Save</button>
+        </footer>
+      </form>
+    </div>
+    <div class="mdc-dialog__scrim"></div>
+  </aside>
+  {{/unless}}
+{{/premium_content ~}}
+
+<div class="mdc-layout-grid head v-margin">
+  <div class="mdc-layout-grid__inner">
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone action">
+      {{#if @root.data.auth ~}}
+        {{#>premium_content}}
+          {{#unless savedSearch ~}}
+            {{#with (
+              querystringify (obj)
+              keywords=@root.request.params.query.keywords
+              activities=(sort @root.request.params.query.activities)
+              beneficiaries=(sort @root.request.params.query.beneficiaries)
+              geographical_areas_funded=(sort @root.request.params.query.geographical_areas_funded)
+              type_of_cost=(sort @root.request.params.query.type_of_cost)
+              type_of_funding=(sort @root.request.params.query.type_of_funding)
+              source_of_fund=(sort @root.request.params.query.source_of_fund)
+              miscellaneous=(sort @root.request.params.query.miscellaneous)
+            ) ~}}
+            <button class="mdc-button mdc-button--raised mdc-button--large save-search hide-sm hide-md save-search-dialog-button" id="save-search-button">
+              <span class="far fa-search-plus mdc-list-item__graphic" aria-hidden="true"></span>
+              Save/email this search
+            </button>
+            {{/with ~}}
+            <button class="mdc-button mdc-button--raised mdc-button--large filter-search hide-lg filter-search-button" id="filter-search-button">
+              <span class="far fa-search mdc-list-item__graphic" aria-hidden="true"></span>
+              Search filters
+            </button>
+          {{/unless ~}}
+        {{/premium_content}}
+        {{#>premium_content_alt}}
+          <a href="/premium" class="mdc-button mdc-button--raised mdc-button--large save-search hide-sm hide-md" id="save-search-button">
+            <span class="far fa-sign-in-alt mdc-list-item__graphic" aria-hidden="true"></span>
+            Go premium to save searches and get alerts
+          </a>
+        {{/premium_content_alt}}
+      {{else}}
+        {{#compare @root.data.search_data.detailed_results.hits.total ">" 10 ~}}
+          <a href="/sign-up" class="mdc-button mdc-button--raised mdc-button--large save-search hide-sm hide-md" id="save-search-button">
+            <span class="far fa-sign-in-alt mdc-list-item__graphic" aria-hidden="true"></span>
+            Sign up to see more results
+          </a>
+        {{/compare ~}}
+        <button class="mdc-button mdc-button--raised mdc-button--large filter-search hide-lg filter-search-button" id="filter-search-button">
+          <span class="far fa-search mdc-list-item__graphic" aria-hidden="true"></span>
+          Search filters
+        </button>
+      {{/if ~}}
+    </div>
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone pagination-desktop">
+      {{#if @root.data.auth ~}}
+        {{> pagination_limited firstLastNavigation=true paging=@root.data.search_data.detailed_results.pagination}}
+      {{/if ~}}
+    </div>
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
+      {{#compare @root.data.search_data.detailed_results.hits.total ">" 0 ~}}
+      <form action="{{{@root.request.url.path}}}" method="GET">
+        {{#each (split "activities,beneficiaries,geographical_areas_funded,type_of_cost,type_of_funding,source_of_fund,miscellaneous" ",")}}
+          {{#if (getProperty @root.request.params.query this) ~}}
+            {{#each (arrayify (getProperty @root.request.params.query this)) ~}}
+              <input type="hidden" name="{{../this}}[]" value="{{this}}" />
+            {{/each ~}}
+          {{/if ~}}
+        {{/each ~}}
+        {{#each (split "keywords" ",")}}
+          {{#if (getProperty @root.request.params.query this) ~}}
+            <input type="hidden" name="{{this}}" value="{{getProperty @root.request.params.query this}}" />
+          {{/if ~}}
+        {{/each ~}}
+        {{> fund_search_sort}}
+      </form>
+      {{/compare ~}}
+    </div>
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone pagination-mobile">
+      {{#if @root.data.auth ~}}
+        {{> pagination_limited firstLastNavigation=true paging=@root.data.search_data.detailed_results.pagination}}
+      {{/if ~}}
+    </div>
+  </div>
+</div>
+
+{{#if (contains @root.request.url.host "local:8080")}}
+<div class="search-info mdc-elevation--z1">
+  <h3 onclick="$('#search-query').toggleClass('hidden');">Search Query (show/hide)</h3>
+  <pre id="search-query" class="hidden">{{{safeStringify @root.data.search_data.detailed_results.request}}}</pre>
+</div>
+{{/if}}
+
+
+{{#each @root.data.search_data.detailed_results.hits.hits ~}}
+  {{#compare @root.route.name "===" "fund_search" ~}}
+    {{> fund_search_result _source sort=sort actions="more-fund,hide-fund,lists"}}
+  {{else}}
+    {{> fund_mini _source sort=sort actions="more-fund,hide-fund,lists"}}
+  {{/compare ~}}
+{{/each ~}}
+
+<div class="foot v-margin-full">
+  {{#if @root.data.auth ~}}
+  {{> pagination_limited firstLastNavigation=true paging=@root.data.search_data.detailed_results.pagination}}
+
+  <button class="mdc-button mdc-button--raised mdc-button--large save-search hide-lg save-search-dialog-button" id="save-search-button-foot">
+    <span class="far fa-search-plus mdc-list-item__graphic" aria-hidden="true"></span>
+    Save/email this search
+  </button>
+  {{else}}
+  <a href="/sign-up" class="mdc-button mdc-button--raised mdc-button--large save-search hide-sm hide-md" id="save-search-button">
+    <span class="far fa-sign-in-alt mdc-list-item__graphic" aria-hidden="true"></span>
+    Sign up to see more results
+  </a>
+  {{/if ~}}
+</div>
+{{/withExtend}}

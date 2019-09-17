@@ -1,0 +1,3 @@
+{{~#ifNone @root.data.currentSite.enablePremiumFeatures (compare @root.data.profile.isPremium ">=" (moment null null)) ~}}
+  {{> @partial-block}}
+{{~/ifNone~}}

@@ -1,0 +1,117 @@
+{
+  "name": "fund_search",
+  "debug": false,
+  "pattern": "/search",
+  "metaData": {
+    "sidebarButton": {
+      "icon": "search",
+      "tooltip": "Search",
+      "classes": "hide-md hide-lg"
+    }
+  },
+  "defaultParams": {
+    "context": "results"
+  },
+  "tasks": [
+    "context.metaData.commonTasks.currentSite",
+    "context.metaData.commonTasks.authNotRequired",
+    "context.metaData.commonTasks.profileData",
+    "context.metaData.commonTasks.bulletinName",
+    "context.metaData.commonTasks.menus",
+    "context.metaData.commonTasks.searchesData",
+    "context.metaData.commonTasks.shortlistData",
+    {
+      "name": "search_data",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../data/elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": [
+          {
+            "name": "detailed_results",
+            "index": "{$../data/elasticsearch-index.txt}",
+            "type": "fs-fund",
+            "template": ">context.metaData.handlebars.queries.funds_search-list"
+          }
+        ]
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "pdf_reroute",
+      "taskModule": "reroute",
+      "config": {
+        "if": [
+          {
+          "and": [
+              { "var": ["data.auth.uid"] },
+              { "var": ["request.params.query.pdf"] }
+            ]
+          },
+          "search_pdf",
+          false
+        ]
+      }
+    },
+    "context.metaData.commonTasks.supplimentaryResponses",
+    {
+      "name": "destination",
+      "taskModule": "renderLayout",
+      "renderer": "handlebars",
+      "config": {
+        "logic": {
+          "if": [
+            {
+              "in": [
+                "view=rss",
+                {
+                  "var": "request.fullUrl"
+                }
+              ]
+            },
+            "rss",
+            {
+              "in": [
+                "view=json",
+                {
+                  "var": "request.fullUrl"
+                }
+              ]
+            },
+            "data",
+            "default"
+          ]
+        },
+        "output": "body",
+        "layouts": {
+          "rss": {
+            "layout": ">context.metaData.handlebars.layouts.rss",
+            "parts": {
+              "head": ">context.metaData.handlebars.templates.funds_search-rss-head-tags",
+              "body": ">context.metaData.handlebars.templates.funds_search-rss"
+            },
+            "contentType": "application/rss+xml"
+          },
+          "default": {
+            "layout": ">context.metaData.handlebars.layouts.default",
+            "parts": {
+              "head": ">context.metaData.handlebars.templates.funds_search-head-tags",
+              "sidebar": ">context.metaData.handlebars.templates.funds_search-form",
+              "body": ">context.metaData.handlebars.templates.funds_search"
+            },
+            "contentType": "text/html"
+          },
+          "data": {
+            "layout": ">context.metaData.handlebars.layouts.data",
+            "parts": {
+              "content": ">context.metaData.handlebars.templates.funds_search-json"
+            },
+            "contentType": "application/json"
+          }
+        }
+      }
+    }
+  ]
+}

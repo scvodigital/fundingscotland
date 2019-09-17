@@ -1,0 +1,60 @@
+{
+  "name": "hidden_funds",
+  "pattern": "/hidden-funds",
+  "debug": false,
+  "metaData": {
+    "hideSearch": true
+  },
+  "tasks": [
+    "context.metaData.commonTasks.authRequired",
+    "context.metaData.commonTasks.currentSite",
+    "context.metaData.commonTasks.profileData",
+    "context.metaData.commonTasks.bulletinName",
+    "context.metaData.commonTasks.menus",
+    {
+      "name": "primaryResponse",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../data/elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": {
+          "name": "saved",
+          "index": "{$../data/elasticsearch-index.txt}",
+          "type": "fs-fund",
+          "template": ">context.metaData.handlebars.queries.funds_hidden",
+          "metaData": {
+            "size": 1000
+          }
+        }
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "destination",
+      "taskModule": "renderLayout",
+      "renderer": "handlebars",
+      "config": {
+        "logic": {
+          "if": [
+            "default"
+          ]
+        },
+        "output": "body",
+        "layouts": {
+          "default": {
+            "layout": ">context.metaData.handlebars.layouts.default",
+            "parts": {
+              "body": ">context.metaData.handlebars.templates.funds_hidden",
+              "head": ">context.metaData.handlebars.templates.pages_home-head-tags",
+              "foot": "",
+              "sidebar": ">context.metaData.handlebars.templates.account_sidebar"
+            },
+            "contentType": "text/html"
+          }
+        }
+      }
+    }
+  ]
+}

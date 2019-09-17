@@ -1,0 +1,37 @@
+{
+  "size": 200,
+  "_source": [
+    "Id",
+    "slug",
+    "title",
+    "description",
+    "geographical_areas_funded",
+    "fund_status",
+    "fund_status_slug",
+    "date_reopens",
+    "type_of_cost",
+    "type_of_funding",
+    "funder_organisation.id",
+    "funder_organisation.slug",
+    "funder_organisation.name",
+    "funder_organisation.has_logo",
+    "funder_organisation.logo_url"
+  ],
+  {{#if @root.data.profile.hidden}}
+  {{#json key="query"}}
+    {{#>queries_fund_common showHidden=true}}
+      "ids": {
+        "type": "fs-fund",
+        "values": {{{stringify (getKeys @root.data.profile.hidden)}}}
+      }
+    {{/queries_fund_common}}
+  {{/json}},
+  "sort": {
+    "date_last_important_activity": "desc"
+  }
+  {{else}}
+  "query": {
+    "match_none": {}
+  }
+  {{/if}}
+}

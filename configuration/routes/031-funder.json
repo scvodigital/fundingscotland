@@ -1,0 +1,95 @@
+{
+  "name": "funder",
+  "debug": false,
+  "pattern": "/funder/:id(/:junk)",
+  "defaultParams": {
+    "context": "detail"
+  },
+  "tasks": [
+    "context.metaData.commonTasks.currentSite",
+    "context.metaData.commonTasks.authNotRequired",
+    "context.metaData.commonTasks.shortlistData",
+    "context.metaData.commonTasks.profileData",
+    "context.metaData.commonTasks.bulletinName",
+    "context.metaData.commonTasks.menus",
+    "context.metaData.commonTasks.fundersWithFunds",
+    {
+      "name": "primaryResponse",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../data/elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": {
+          "index": "{$../data/elasticsearch-index.txt}",
+          "type": "fs-organisation",
+          "template": ">context.metaData.handlebars.queries.funders_funder"
+        }
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "supplimentaryResponses",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../data/elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": [
+          {
+            "name": "funds_open",
+            "index": "{$../data/elasticsearch-index.txt}",
+            "type": "fs-fund",
+            "template": ">context.metaData.handlebars.queries.funds_funder-funds-open"
+          },
+          {
+            "name": "funds_closed",
+            "index": "{$../data/elasticsearch-index.txt}",
+            "type": "fs-fund",
+            "template": ">context.metaData.handlebars.queries.funds_funder-funds-closed"
+          },
+          {
+            "name": "types",
+            "index": "{$../data/elasticsearch-index.txt}",
+            "type": "fs-fund",
+            "template": ">context.metaData.handlebars.queries.funds_types"
+          },
+          {
+            "name": "not_found",
+            "index": "{$../data/elasticsearch-index.txt}",
+            "type": "fs-organisation",
+            "template": ">context.metaData.handlebars.queries.pages_not-found"
+          }
+        ]
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "destination",
+      "taskModule": "renderLayout",
+      "renderer": "handlebars",
+      "config": {
+        "logic": {
+          "if": [
+            "default"
+          ]
+        },
+        "output": "body",
+        "layouts": {
+          "default": {
+            "layout": ">context.metaData.handlebars.layouts.default",
+            "parts": {
+              "head": ">context.metaData.handlebars.templates.funders_funder-head-tags",
+              "body": ">context.metaData.handlebars.templates.funders_funder",
+              "foot": "",
+              "sidebar": ">context.metaData.handlebars.templates.funders_search-form"
+            },
+            "contentType": "text/html"
+          }
+        }
+      }
+    }
+  ]
+}
