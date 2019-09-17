@@ -1,7 +1,7 @@
-@import "./sites/fundingscotland/styles/_mixins.scss";
-@import "./sites/fundingscotland/styles/_colours.scss";
+@import "./_mixins.scss";
+@import "./_colours.scss";
 @import "./node_modules/material-components-web/material-components-web.scss";
-@import "./lib/common-styles.scss";
+@import "./node_modules/@scvo/common/old/common-styles.scss";
 
 html {
   font-size: 1.02rem !important;

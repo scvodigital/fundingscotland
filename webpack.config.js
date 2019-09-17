@@ -1,3 +1,4 @@
+const globby = require('globby');
 const autoprefixer = require('autoprefixer');
 const JsonIncWebpackPlugin = require('./node_modules/@scvo/common/json-inc-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -30,7 +31,7 @@ module.exports = (env) => {
       aggregateTimeout: 300
     },
     entry: [
-      './src/main.scss',
+      ...globby.sync('./src/styles/*-main.scss'),
       './src/main.js',
     ],
     output: {
