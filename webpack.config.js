@@ -3,6 +3,7 @@ const autoprefixer = require('autoprefixer');
 const JsonIncWebpackPlugin = require('./node_modules/@scvo/common/json-inc-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtraWatchWebpackPlugin = require('extra-watch-webpack-plugin');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
 
 module.exports = (env) => {
   const plugins = [
@@ -23,6 +24,14 @@ module.exports = (env) => {
     plugins.push(new ExtraWatchWebpackPlugin({
       files: ['./configuration/**/*', './assets/**/*']
     }));
+  } else {
+    plugins.push(new CompressionWebpackPlugin({
+      test: /\.(js)|(css)|(scss)|(html)|(htm)|(txt)$/i,
+      exclude: ['build/config.json'],
+      filename: (info) => {
+        return info.replace(/.gz$/, '')
+      }
+    }));
   }
 
   return {
@@ -42,11 +51,12 @@ module.exports = (env) => {
     module: {
       rules: [
         {
-          test: /\.scss$/,
+          test: /\/([a-z0-9-_]*?)-main\.scss$/,
           use: [{
               loader: 'file-loader',
               options: {
-                name: 'build/main.css',
+                regExp: /\/([a-z0-9-_]*?)-main\.scss$/,
+                name: 'build/sub-sites/[1]/main.css',
               },
             },
             {
@@ -54,12 +64,6 @@ module.exports = (env) => {
             },
             {
               loader: 'css-loader'
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: () => [autoprefixer()],
-              },
             },
             {
               loader: 'sass-loader',
