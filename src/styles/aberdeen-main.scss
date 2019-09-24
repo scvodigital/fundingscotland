@@ -560,3 +560,30 @@ table.premium {
     }
   }
 }
+
+.mdc-chip,
+.mdc-theme--primary-bg {
+  background-color: $mdc-theme-primary !important;
+}
+.mdc-chip:hover {
+  background-color: $mdc-theme-primary-dark !important;
+}
+
+.mdc-theme--primary-light-bg {
+  background-color: $mdc-theme-primary-light !important;
+}
+
+.mdc-tab--active,
+.mdc-menu .mdc-list-item.mdc-list-item--activated,
+.mdc-drawer .mdc-list-item--activated,
+.mdc-list-item--activated,
+.mdc-tab--active .mdc-tab__icon.far,
+.mdc-tab--active .mdc-list-item__graphic.far,
+.mdc-menu .mdc-list-item.mdc-list-item--activated .mdc-tab__icon.far,
+.mdc-menu .mdc-list-item.mdc-list-item--activated .mdc-list-item__graphic.far,
+.mdc-drawer .mdc-list-item--activated .mdc-tab__icon.far,
+.mdc-drawer .mdc-list-item--activated .mdc-list-item__graphic.far,
+.mdc-list-item--activated .mdc-tab__icon.far,
+.mdc-list-item--activated .mdc-list-item__graphic.far {
+  color: $mdc-theme-primary;
+}
