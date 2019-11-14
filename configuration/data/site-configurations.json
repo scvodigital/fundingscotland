@@ -1044,7 +1044,7 @@
   },
   "perthkinross": {
     "name": "perthkinross",
-    "live": false,
+    "live": true,
     "title": "Perth & Kinross Funding Search",
     "organisationName": "Perth & Kinross Council",
     "organisationContact": "perthkinross.fundingscotland@scvo.org.uk",
@@ -1052,8 +1052,8 @@
     "fundingArea": "in Perth & Kinross",
     "url": "https://perth-kinross.fundingscotland.com",
     "logo": "https://storage.googleapis.com/fundingscotland/logos/perthkinross.png",
-    "emailLogo": "https://storage.googleapis.com/fundingscotland/email/fs-perthkinross-email.png",
-    "headerImage": "https://storage.googleapis.com/fundingscotland/headers/ca-cm-crop.jpg",
+    "emailLogo": "https://storage.googleapis.com/fundingscotland/email/cm-perthkinross-email.png",
+    "headerImage": "https://storage.googleapis.com/fundingscotland/headers/pk-cm-crop.jpg",
     "colors": {
       "primary": "#0D8296",
       "primaryText": "#ffffff",
