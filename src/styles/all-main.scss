@@ -60,6 +60,9 @@ strong {
   font-size: 3.6rem;
 }
 
+body {
+  background-color: $mdc-theme-footer-light;
+}
 ::-moz-selection {
   color: #fff;
   background: $mdc-theme-primary-dark;
@@ -949,7 +952,6 @@ footer.mdc-layout__footer.mdc-theme--footer-bg.mdc-theme--on-footer {
 
 footer.mdc-layout__footer {
   border-top: none;
-  background-color: $mdc-theme-footer-light;
   box-shadow: none;
   h3 {
     color: white;
