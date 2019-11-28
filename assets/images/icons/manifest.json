@@ -1,69 +1,40 @@
 {
-<<<<<<< HEAD
  "name": "SCVO",
  "background_color": "#fff",
  "theme_color": "#C2185b",
  "icons": [
   {
    "src": "\/assets\/images\/icons\/android-icon-36x36.png",
-=======
- "name": "Funding Scotland",
- "background_color": "#fff",
- "theme_color": "#537F2C",
- "icons": [
-  {
-   "src": "\/app\/assets\/icons\/android-icon-36x36.png",
->>>>>>> 72f9b4deb4af44378487587fdca913f4d5edddbb
    "sizes": "36x36",
    "type": "image\/png",
    "density": "0.75"
   },
   {
-<<<<<<< HEAD
    "src": "\/assets\/images\/icons\/android-icon-48x48.png",
-=======
-   "src": "\/app\/assets\/icons\/android-icon-48x48.png",
->>>>>>> 72f9b4deb4af44378487587fdca913f4d5edddbb
    "sizes": "48x48",
    "type": "image\/png",
    "density": "1.0"
   },
   {
-<<<<<<< HEAD
    "src": "\/assets\/images\/icons\/android-icon-72x72.png",
-=======
-   "src": "\/app\/assets\/icons\/android-icon-72x72.png",
->>>>>>> 72f9b4deb4af44378487587fdca913f4d5edddbb
    "sizes": "72x72",
    "type": "image\/png",
    "density": "1.5"
   },
   {
-<<<<<<< HEAD
    "src": "\/assets\/images\/icons\/android-icon-96x96.png",
-=======
-   "src": "\/app\/assets\/icons\/android-icon-96x96.png",
->>>>>>> 72f9b4deb4af44378487587fdca913f4d5edddbb
    "sizes": "96x96",
    "type": "image\/png",
    "density": "2.0"
   },
   {
-<<<<<<< HEAD
    "src": "\/assets\/images\/icons\/android-icon-144x144.png",
-=======
-   "src": "\/app\/assets\/icons\/android-icon-144x144.png",
->>>>>>> 72f9b4deb4af44378487587fdca913f4d5edddbb
    "sizes": "144x144",
    "type": "image\/png",
    "density": "3.0"
   },
   {
-<<<<<<< HEAD
    "src": "\/assets\/images\/icons\/android-icon-192x192.png",
-=======
-   "src": "\/app\/assets\/icons\/android-icon-192x192.png",
->>>>>>> 72f9b4deb4af44378487587fdca913f4d5edddbb
    "sizes": "192x192",
    "type": "image\/png",
    "density": "4.0"
