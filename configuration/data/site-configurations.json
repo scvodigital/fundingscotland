@@ -1044,7 +1044,7 @@
   },
   "perthkinross": {
     "name": "perthkinross",
-    "live": false,
+    "live": true,
     "title": "Perth & Kinross Funding Search",
     "organisationName": "Perth & Kinross Council",
     "organisationContact": "perthkinross.fundingscotland@scvo.org.uk",
