@@ -36,7 +36,7 @@
         "appName": "fundingscotland",
         "pathTemplate": "/users/{{default data.auth.uid 'no-such-profile'}}/",
         "setOrUpdate": "set",
-        "dataTemplate": "{ \"organisation\": {{{stringify (default @root.request.query.params.organisation 'None')}}}, \"postcode\": {{{stringify (default @root.request.query.params.postcode 'None')}}} }"
+        "dataTemplate": "{ \"organisation\": {{{stringify (default @root.request.params.query.organisation 'None')}}}, \"postcode\": {{{stringify (default @root.request.params.query.postcode 'None')}}} }"
       },
       "renderer": "handlebars"
     },
