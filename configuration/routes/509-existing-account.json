@@ -1,7 +1,7 @@
 {
   "name": "existing_account",
-  "pattern": "/existing-account",
   "debug": false,
+  "pattern": "/existing-account",
   "tasks": [
     "context.metaData.commonTasks.currentSite",
     {

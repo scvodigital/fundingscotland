@@ -1,7 +1,7 @@
 {
   "name": "premium_activate",
+  "debug": true,
   "pattern": "/activate-premium",
-  "debug": false,
   "tasks": [
     "context.metaData.commonTasks.currentSite",
     "context.metaData.commonTasks.authRequired",
@@ -15,7 +15,7 @@
         "appName": "fundingscotland",
         "pathTemplate": "/users/{{default data.auth.uid 'no-such-profile'}}/{{@root.data.currentSite.name}}/isPremium",
         "setOrUpdate": "set",
-        "dataTemplate": "{{#compare @root.data.auth.passwordHash @root.request.params.query.passwordHash}}{{dateMath 'now+1y'}}{{else}}false{{/compare}}"
+        "dataTemplate": "{{#compare (slugify @root.data.auth.passwordHash) @root.request.params.query.passwordHash}}{{dateMath 'now+1y'}}{{else}}false{{/compare}}"
       }
     },
     {

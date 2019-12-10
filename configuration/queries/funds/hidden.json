@@ -17,12 +17,12 @@
     "funder_organisation.has_logo",
     "funder_organisation.logo_url"
   ],
-  {{#if @root.data.profile.hidden}}
+  {{#if (getProperty @root.data.profile (concat @root.data.currentSite.name '.hidden'))}}
   {{#json key="query"}}
     {{#>queries_fund_common showHidden=true}}
       "ids": {
         "type": "fs-fund",
-        "values": {{{stringify (getKeys @root.data.profile.hidden)}}}
+        "values": {{{stringify (getKeys (getProperty @root.data.profile (concat @root.data.currentSite.name '.hidden')))}}}
       }
     {{/queries_fund_common}}
   {{/json}},

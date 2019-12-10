@@ -25,7 +25,7 @@
   ],
   {{#json key="query"}}
     {{#>queries_fund_common}}
-      {{#if @root.data.profile.notes ~}}
+      {{#if (getProperty @root.data.profile (concat @root.data.currentSite.name '.notes')) ~}}
       "bool": {
         "filter": [
           {
@@ -35,7 +35,7 @@
           }
         ],
         "must": [
-          {{>queries_terms field="Id" terms=(getKeys @root.data.profile.notes)}}
+          {{>queries_terms field="Id" terms=(getKeys (getProperty @root.data.profile (concat @root.data.currentSite.name '.notes')))}}
         ]
       }
       {{else}}

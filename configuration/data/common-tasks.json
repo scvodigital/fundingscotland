@@ -150,7 +150,7 @@
     "renderer": "handlebars",
     "config": {
       "appName": "fundingscotland",
-      "pathTemplate": "/users/{{default data.auth.uid 'no-such-profile'}}/{{data.currentSite.name}}",
+      "pathTemplate": "/users/{{default data.auth.uid 'no-such-profile'}}",
       "defaultData": {}
     }
   },

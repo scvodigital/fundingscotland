@@ -1,7 +1,7 @@
 {
   "name": "update_profile",
+  "debug": true,
   "pattern": "/update-profile",
-  "debug": false,
   "acceptedVerbs": "POST",
   "tasks": [
     "context.metaData.commonTasks.authRequired",

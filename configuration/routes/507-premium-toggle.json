@@ -1,7 +1,7 @@
 {
   "name": "premium_toggle",
+  "debug": true,
   "pattern": "/premium-toggle",
-  "debug": false,
   "tasks": [
     "context.metaData.commonTasks.currentSite",
     "context.metaData.commonTasks.authRequired",
@@ -13,7 +13,7 @@
       "renderer": "handlebars",
       "config": {
         "appName": "fundingscotland",
-        "pathTemplate": "/users/{{default data.auth.uid 'no-such-profile'}}/{{@root.data.currentSite.name}}/isPremium",
+        "pathTemplate": "/users/{{default data.auth.uid 'no-such-profile'}}/default/isPremium",
         "setOrUpdate": "set",
         "dataTemplate": "{{#>premium_content}}false{{/premium_content}}{{#>premium_content_alt}}{{dateMath 'now+1y'}}{{/premium_content_alt}}"
       }
