@@ -1,12 +1,12 @@
 <div class="x-margin-full l-border mdc-theme--primary-border-left l-padding-full" data-notes-for="{{id}}">
-  {{#each (sortBy (keyValue (getProperty @root.data.profile.notes id)) "key" "desc")}}
+  {{#each (sortBy (keyValue (getProperty @root.data.profile (concat @root.data.currentSite.name ".notes." id))) "key" "desc")}}
     <div class="v-margin" data-note-id="{{../id}}-{{this.key}}">
       <i class="fas fa-circle fa-lg pull-left mdc-theme--primary-dark" style="margin-left: -1.7rem; margin-top: 1rem;"></i>
       <div class="note x-padding-full l-margin-full mdc-theme--primary-light-bg mdc-theme--on-primary-light">
         <div class="mdc-theme--primary-light-bg" style="height: 1rem; width: 1rem; position: absolute; margin-left: -1.5rem; transform: rotate(45deg);"></div>
         <div class="mdc-typography--headline7 b-margin">
           <button type="button" class="mdc-icon-button pull-right" data-advanced-ajax-button='{
-              "url": "/delete-note", 
+              "url": "/delete-note",
               "method": "POST",
               "responseType": "json",
               "headers": {
@@ -26,15 +26,15 @@
               },
               "after": {
                 "deleteElements": [
-                  "[data-note-id=\"{{../id}}-{{this.key}}\"]" 
+                  "[data-note-id=\"{{../id}}-{{this.key}}\"]"
                 ]
               }
             }'>
             <span class="fas fa-trash mdc-icon-button__icon fa-xs"></span>
           </button>
-          <strong>{{this.value.status}}</strong> | 
+          <strong>{{this.value.status}}</strong> |
           <small>{{momentFormat (moment this.key "x") "Do MMMM YYYY HH:mm"}}</small>
-        </div> 
+        </div>
         <div class="note-contents">
           {{{markdown this.value.note}}}
         </div>
