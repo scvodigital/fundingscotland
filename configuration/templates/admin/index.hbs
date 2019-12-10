@@ -211,7 +211,7 @@
                 <div class="mdc-layout-grid__inner equal-height" style="align-items: center;">
                   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6">
                     {{>textbox id="expiry" leadingIcon="fas fa-calendar" label="Premium expiry" type="date"
-                        value=(if @root.data.userProfile.default.isPremium (momentFormat (moment @root.data.userProfile.default.isPremium "x") "YYYY-MM-DD") else="")}}
+                        value=(if @root.data.userProfile.isPremium (momentFormat (moment @root.data.userProfile.isPremium "x") "YYYY-MM-DD") else="")}}
                   </div>
                   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6">
                     <input type="hidden" name="uid" value="{{@root.data.userAuth.uid}}">

@@ -13,7 +13,7 @@
       "renderer": "handlebars",
       "config": {
         "appName": "fundingscotland",
-        "pathTemplate": "/users/{{default data.auth.uid 'no-such-profile'}}/default/isPremium",
+        "pathTemplate": "/users/{{default data.auth.uid 'no-such-profile'}}/isPremium",
         "setOrUpdate": "set",
         "dataTemplate": "{{#>premium_content}}false{{/premium_content}}{{#>premium_content_alt}}{{dateMath 'now+1y'}}{{/premium_content_alt}}"
       }
