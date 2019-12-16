@@ -1,3 +1,3 @@
-{{~#ifNone @root.data.currentSite.enablePremiumFeatures (compare @root.data.profile.isPremium ">=" (moment null null)) ~}}
+{{~#ifNone @root.data.currentSite.enablePremiumFeatures (compare (getProperty @root.data.profile (concat @root.data.currentSite.name ".isPremium")) ">=" (moment null null)) ~}}
   {{> @partial-block}}
 {{~/ifNone~}}

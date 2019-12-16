@@ -42,7 +42,7 @@
       "renderer": "handlebars",
       "config": {
         "appName": "fundingscotland",
-        "pathTemplate": "/users/{{default @root.request.body.uid 'no-such-profile'}}/isPremium",
+        "pathTemplate": "/users/{{default @root.request.body.uid 'no-such-profile'}}/{{@root.data.currentSite.name}}/isPremium",
         "setOrUpdate": "set",
         "dataTemplate": "{{{@root.data.premiumStatus}}}"
       }

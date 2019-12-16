@@ -1,4 +1,4 @@
-{{#if (getProperty @root.data.profile.notes Id) ~}}
+{{#if (getProperty @root.data.profile (concat @root.data.currentSite.name ".notes." id)) ~}}
 <div class="search-result-article__notes">
   <h4 class="mdc-typography--headline7">
     Your notes&ensp;

@@ -14,7 +14,7 @@
           Premium
         </h2>
         <p>
-          Your premium account upgrade is active till the {{momentFormat (moment @root.data.profile.isPremium 'x') 'Do \o\f MMMM, YYYY'}}.
+          Your premium account upgrade is active till the {{momentFormat (moment (getProperty @root.data.profile (concat @root.data.currentSite.name ".isPremium")) 'x') 'Do \o\f MMMM, YYYY'}}.
         </p>
       {{/compare ~}}
     {{/premium_content}}

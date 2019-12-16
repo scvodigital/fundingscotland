@@ -32,7 +32,7 @@
       {{/if ~}}
     {{/premium_content}}
 
-    {{#ifAll @root.data.searches.items.[0] (compare @root.data.primaryResponse.personalised.hits.total ">" 0) (ifAny @root.data.profile.isPremium (compare @root.data.currentSite.name "!==" "default")) ~}}
+    {{#ifAll @root.data.searches.items.[0] (compare @root.data.primaryResponse.personalised.hits.total ">" 0) (ifAny (compare (getProperty @root.data.profile (concat @root.data.currentSite.name ".isPremium")) ">=" (moment null null)) (compare @root.data.currentSite.name "!==" "default")) ~}}
     <div class="mdc-layout-grid home-heading">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">

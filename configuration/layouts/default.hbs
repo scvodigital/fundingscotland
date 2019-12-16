@@ -127,7 +127,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 {{@root.data.currentSite.title}}
                 {{#ifAll @root.data.auth (compare @root.data.currentSite.name "===" "default") ~}}
                 {{#>premium_content}}
-                <span class="mdc-typography--caption" title="Premium expiry: {{momentFormat (moment @root.data.profile.isPremium 'x') 'YYYY-MM-DD'}}">
+                <span class="mdc-typography--caption" title="Premium expiry: {{momentFormat (moment (getProperty @root.data.profile (concat @root.data.currentSite.name ".isPremium")) 'x') 'YYYY-MM-DD'}}">
                   Premium
                 </span>
                 {{/premium_content}}
@@ -392,7 +392,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   {{#ifAll @root.data.auth (compare @root.data.currentSite.name "===" "default") ~}}
                   {{#>premium_content}}
                   <p>
-                    Your premium subscription is active until the {{momentFormat (moment @root.data.profile.isPremium 'x') 'Do \o\f MMMM, YYYY'}}.
+                    Your premium subscription is active until the {{momentFormat (moment (getProperty @root.data.profile (concat @root.data.currentSite.name ".isPremium")) 'x') 'Do \o\f MMMM, YYYY'}}.
                   </p>
                   {{/premium_content}}
                   {{/ifAll ~}}
