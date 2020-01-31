@@ -119,9 +119,6 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJQ3FN"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div class="hide-md hide-sm">
-    {{> components_scvo_bar}}
-  </div>
   <fundingscotland-site>
     <div class="mdc-typography">
       {{#ifAny request.params.query.debug (contains request.url.hostname ".local") ~}}
@@ -149,11 +146,11 @@
 
       <header class="mdc-top-app-bar mdc-elevation--z5 top-bar-stuck" id="top-bar">
         <div class="container-fluid">
-          {{!-- <div class="mdc-top-app-bar__row mdc-top-app-bar__lower scvo-tab-bar">
+          <div class="mdc-top-app-bar__row mdc-top-app-bar__lower scvo-tab-bar">
             <section class="mdc-top-app-bar__row mdc-top-app-bar__section--align-start">
               {{> components_scvo_bar}}
             </section>
-          </div> --}}
+          </div>
           <div class="mdc-top-app-bar__row mdc-top-app-bar__upper">
             {{!-- <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start mdc-top-app-bar__section--logo">
               <a href="https://scvo.scot">

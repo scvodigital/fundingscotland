@@ -140,6 +140,7 @@ footer.mdc-layout__footer {
   background-color: $gray-color;
   height: 40px;
   padding: 0 $unit;
+  width: 100%;
   ul {
     list-style-type: none;
     margin: 0;
@@ -149,10 +150,11 @@ footer.mdc-layout__footer {
   }
   .text-link {
     display: inline-block;
-    height: 36px;
+    box-sizing: border-box;
+    height: 40px;
     line-height: 40px;
     border-bottom: $thick-line solid transparent;
-    margin-right: $unit*(3/4);
+    margin-right: $unit;
     color: $secondary-color;
     transition: border 0.3s;
   }
@@ -161,10 +163,11 @@ footer.mdc-layout__footer {
     border-bottom: $thick-line solid $secondary-color;
   }
   .brand-logo {
-    margin-left: $unit/4;
+    // margin-left: $unit/4;
     line-height: 38px;
-    width: 90px;
+    // width: 90px;
     img {
+      height: 30px !important;
       vertical-align: middle;
     }
   }
