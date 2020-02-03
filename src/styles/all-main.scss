@@ -115,6 +115,8 @@ h1,
 header .container-fluid .mdc-top-app-bar__upper .mdc-top-app-bar__title,
 .mdc-top-app-bar__section--logo {
   font-family: $heading-font-family, $base-font-family, Helvetica, Arial, sans-serif;
+  font-feature-settings: "ss01" on;
+  letter-spacing: -0.08rem;
 }
 footer.mdc-layout__footer {
   p, li, div, h3, a, strong {
@@ -173,7 +175,7 @@ strong {
 }
 
 body {
-  background-color: $mdc-theme-footer-light;
+  background-color: $mdc-theme-footer;
 }
 ::-moz-selection {
   color: #fff;
@@ -990,6 +992,8 @@ footer,
     .overlay-content {
       .header-text {
         font-family: $heading-font-family;
+        font-feature-settings: "ss01" on;
+        letter-spacing: -0.08rem;
         font-weight: $heading-font-weight;
         font-size: 3rem;
         line-height: 3.4rem;
@@ -1061,10 +1065,10 @@ footer,
 
 // Footer ======================================================================
 
-footer.mdc-layout__footer.mdc-theme--footer-bg.mdc-theme--on-footer {
-  background-color: $mdc-theme-footer-light !important;
-  color: $mdc-theme-footer !important;
-}
+// footer.mdc-layout__footer.mdc-theme--footer-bg.mdc-theme--on-footer {
+//   background-color: $mdc-theme-footer-light !important;
+//   color: $mdc-theme-footer !important;
+// }
 
 footer.mdc-layout__footer {
   border-top: none;
@@ -1074,7 +1078,7 @@ footer.mdc-layout__footer {
     font-weight: $heading-font-weight;
     border-bottom: none;
     font-size: 1.4rem;
-    margin: $unit 0 0;
+    margin: $unit 0 $unit/2;
     text-transform: none;
   }
   .about a,
@@ -1102,7 +1106,7 @@ footer.mdc-layout__footer {
   }
   .footer-main {
     margin-bottom: 0;
-    padding: $unit $unit $unit*2;
+    padding: $unit*1.5 $unit $unit*2;
     background-color: $mdc-theme-footer;
     p,
     a {
@@ -1110,10 +1114,10 @@ footer.mdc-layout__footer {
     }
   }
   .footer-copyright {
-    p,
-    a {
-      color: $mdc-theme-footer;
-    }
+    // p,
+    // a {
+    //   color: $mdc-theme-footer;
+    // }
     p {
       line-height: 1.3rem;
     }
