@@ -1086,7 +1086,7 @@ footer.mdc-layout__footer {
     color: white;
     font-weight: $heading-font-weight;
     border-bottom: none;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     margin: $unit 0 0;
     text-transform: none;
   }
@@ -1115,7 +1115,7 @@ footer.mdc-layout__footer {
   }
   .footer-main {
     margin-bottom: 0;
-    padding-bottom: $unit;
+    padding: $unit $unit $unit*2;
     background-color: $mdc-theme-footer;
     p,
     a {
