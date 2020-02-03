@@ -184,12 +184,12 @@
   </div>
 </div>
 
-{{#if (contains @root.request.url.host "local:8080")}}
+{{#ifAll (contains @root.request.url.host "local:8080") @root.request.params.query.debug ~}}
 <div class="search-info mdc-elevation--z1">
   <h3 onclick="$('#search-query').toggleClass('hidden');">Search Query (show/hide)</h3>
   <pre id="search-query" class="hidden">{{{safeStringify @root.data.search_data.detailed_results.request}}}</pre>
 </div>
-{{/if}}
+{{/ifAll ~}}
 
 
 {{#each @root.data.search_data.detailed_results.hits.hits ~}}
