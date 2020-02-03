@@ -174,11 +174,6 @@
             "textBag": "Health education promotion, dental, nutrition"
           },
           {
-            "key": "heritage-and-building-preservation",
-            "label": "Heritage & building preservation",
-            "textBag": "Heritage building preservation, architecture, historic, church, castle"
-          },
-          {
             "key": "mental-health-care",
             "label": "Mental health care",
             "textBag": "Mental health care"
