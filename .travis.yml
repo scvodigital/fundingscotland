@@ -3,7 +3,7 @@ node_js:
 - 10.16.0
 branches:
   only:
-  - production
+  - rollback
 cache:
   npm: true
 before_install:
@@ -15,4 +15,4 @@ deploy:
   provider: script
   skip_cleanup: true
   script: npm run publish
-  on: production
+  on: rollback
