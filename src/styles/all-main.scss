@@ -41,6 +41,9 @@ $mdc-theme-tfn: #3b9db1;
 $mdc-theme-tfn-light: lighten($mdc-theme-tfn, 15%);
 $mdc-theme-tfn-dark: darken($mdc-theme-tfn, 15%);
 
+$primary-color: #FF595A;
+$secondary-color: #244B5A;
+
 $unit: 1rem;
 $thick-line: 5px;
 $transition-speed: 0.3s;
@@ -176,7 +179,7 @@ strong {
 }
 
 body {
-  background-color: $mdc-theme-footer;
+  background-color: $secondary-color;
 }
 ::-moz-selection {
   color: #fff;
@@ -211,14 +214,13 @@ figure {
 header {
   .container-fluid {
     // .scvo-tab-bar {
-    //   background-color: $mdc-theme-footer-light;
     //   .mdc-tab-bar .mdc-tab:first-child {
     //     padding-left: $unit;
     //   }
     //   .mdc-tab-bar .mdc-tab {
     //     display: inline-block;
     //     .mdc-tab--label {
-    //       color: $mdc-theme-footer;
+    //       color: $secondary-color;
     //     }
     //   }
     //   .brand-logo img {
@@ -226,12 +228,12 @@ header {
     //   }
     // }
     .mdc-top-app-bar__upper {
-      background-color: $mdc-theme-footer;
+      background-color: $secondary-color;
       .mdc-top-app-bar__section {
         background-color: $mdc-theme-primary;
       }
       .mdc-top-app-bar__section--logo {
-        background-color: $mdc-theme-footer;
+        background-color: $secondary-color;
         flex: 0 0 auto;
         padding-left: $unit/2;
         img {
@@ -1075,6 +1077,7 @@ footer.mdc-layout__footer {
     text-transform: none;
     font-size: 1.4rem;
   }
+  p,
   a,
   a:hover,
   .about a,
@@ -1084,7 +1087,7 @@ footer.mdc-layout__footer {
   }
   a {
     transition: border $transition-speed;
-    border-bottom: $thick-line solid transparent;
+    // border-bottom: $thick-line solid transparent;
   }
   a.brand-logo {
     border: none !important
@@ -1093,9 +1096,11 @@ footer.mdc-layout__footer {
     height: auto;
   }
   .mdc-list .mdc-list-item a:hover,
+  .about a:hover,
   a:hover {
     text-decoration: none !important;
-    border-bottom: $thick-line solid white;
+    // border-bottom: $thick-line solid white;
+    color: $primary-color;
   }
   .fa-ul {
     .fa-li {
@@ -1107,11 +1112,7 @@ footer.mdc-layout__footer {
   .footer-main {
     margin-bottom: 0;
     padding: $unit*1.5 $unit $unit;
-    background-color: $mdc-theme-footer;
-    p,
-    a {
-      color: white;
-    }
+    background-color: $secondary-color;
   }
   .footer-copyright {
     p {
