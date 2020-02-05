@@ -1111,10 +1111,12 @@ footer.mdc-layout__footer {
   }
   .footer-main {
     margin-bottom: 0;
-    padding: $unit*1.5 $unit $unit;
+    padding: $unit*1.5 $unit*1.5 $unit;
     background-color: $secondary-color;
   }
   .footer-copyright {
+    padding-left: $unit*1.5;
+    padding-right: $unit*1.5;
     p {
       line-height: 1.4rem;
     }
