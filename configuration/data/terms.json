@@ -337,8 +337,8 @@
           },
           {
             "key": "addicts-and-misusers",
-            "label": "Addicts & Misusers",
-            "textBag": "Addicts Misusers, Drugs, Alcoholic"
+            "label": "People affected by drugs and alcohol",
+            "textBag": "People affected by drugs, Drugs, Alcoholic"
           },
           {
             "key": "victims-of-crime-and-abuse",
