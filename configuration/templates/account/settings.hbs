@@ -220,6 +220,26 @@
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
           <h3 class="mdc-typography--headline6 b-margin-full">
+            Your account
+          </h3>
+          <p>
+            You can sign in using your account ({{@root.data.auth.email}}) to the following websites operated by <a href="https://scvo.org">SCVO</a>:
+          </p>
+          <ul>
+            {{#each @root.data.profile}}
+              {{#ifAny accessed notes hidden}}
+                {{#with (getProperty @root.context.metaData.site-configurations @key)}}
+                  <li>
+                    <a href="{{url}}">{{title}}</a>
+                  </li>
+                {{/with}}
+              {{/ifAny}}
+            {{/each}}
+          </ul>
+        </div>
+
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
+          <h3 class="mdc-typography--headline6 b-margin-full">
             Your data
           </h3>
           <p>
@@ -259,27 +279,6 @@
             <span class="far fa-trash mdc-list-item__graphic" aria-hidden="true"></span>
             Delete account
           </button>
-        </div>
-
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
-          <h3 class="mdc-typography--headline6 b-margin-full">
-            Funding Scotland websites
-          </h3>
-          <p>
-            You have signed in using this account ({{@root.data.auth.email}}) to the following
-            Funding Scotland websites:
-          </p>
-          <ul>
-            {{#each @root.data.profile}}
-              {{#ifAny accessed notes hidden}}
-                {{#with (getProperty @root.context.metaData.site-configurations @key)}}
-                  <li>
-                    <a href="{{url}}">{{title}}</a>
-                  </li>
-                {{/with}}
-              {{/ifAny}}
-            {{/each}}
-          </ul>
         </div>
       </div>
     </div>
