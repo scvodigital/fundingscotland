@@ -142,7 +142,7 @@
                 {{@root.data.currentSite.title}}
                 {{#ifAll @root.data.auth (compare @root.data.currentSite.name "===" "default") ~}}
                 {{#>premium_content}}
-                <span class="mdc-typography--caption" title="Premium expiry: {{momentFormat (moment (getProperty @root.data.profile (concat @root.data.currentSite.name ".isPremium")) 'x') 'YYYY-MM-DD'}}">
+                <span class="mdc-typography--caption" title="Premium expiry: {{momentFormat (moment (getProperty @root.data.profile (concat @root.data.currentSite.name '.isPremium')) 'x') 'YYYY-MM-DD'}}">
                   Premium
                 </span>
                 {{/premium_content}}
@@ -165,7 +165,7 @@
                     <i class="far mdc-chip__icon fa-circle"></i>
                   {{/premium_content_alt}}
                   <div class="mdc-chip__text">
-                    Premium user
+                    Premium features
                   </div>
                 </a>
               </div>
@@ -404,13 +404,13 @@
                   <p class="b-margin">
                     {{@root.data.currentSite.title}} lists funders with a track record of supporting projects {{#compare @root.data.currentSite.name "default"}}in Scotland{{else}}{{@root.data.currentSite.fundingArea}}{{/compare}} and is run by the <a href="https://scvo.org">Scottish Council for Voluntary Organisations</a>{{#if @root.data.currentSite.live}}{{#compare @root.data.currentSite.name "!==" "default"}} in partnership with <a href="{{@root.data.currentSite.organisationWebsite}}">{{@root.data.currentSite.organisationName}}</a> as part of <a href="https://fundingscotland.com">Funding Scotland</a>{{/compare}}{{/if}}. <a href="/about">Find out more</a>
                   </p>
-                  {{#ifAll @root.data.auth (compare @root.data.currentSite.name "===" "default") ~}}
+                  {{!-- {{#ifAll @root.data.auth (compare @root.data.currentSite.name "===" "default") ~}}
                   {{#>premium_content}}
                   <p>
                     Your premium subscription is active until the {{momentFormat (moment (getProperty @root.data.profile (concat @root.data.currentSite.name ".isPremium")) 'x') 'Do \o\f MMMM, YYYY'}}.
                   </p>
                   {{/premium_content}}
-                  {{/ifAll ~}}
+                  {{/ifAll ~}} --}}
                 </div>
               </div>
             </div>
