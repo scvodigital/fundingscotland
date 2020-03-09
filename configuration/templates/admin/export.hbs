@@ -1,4 +1,4 @@
-"User Id","Last accessed","Premium subscription","Organisation","Postcode"
+"User Id","Last accessed",{{#compare @root.data.currentSite.name "default"}}"Premium subscription",{{/compare}}"Organisation","Postcode"
 {{#each
   (sortBy
     (filter
@@ -7,6 +7,6 @@
       "exists")
     (concat "value." @root.data.currentSite.name ".accessed") "desc") ~}}
 {{~#with (getProperty value @root.data.currentSite.name)~}}
-{{{json value=../key}}},{{#ifAny (compare accessed null) (compare (momentFormat (moment accessed "x") "YYYY-MM-DD") "2019-06-27")}}Never on current website{{else}}{{{json value=(momentFormat (moment accessed "x") "YYYY-MM-DD")}}}{{/ifAny}},{{#compare ../value.default.isPremium 1}}Permanent{{else}}{{{json value=(if ../value.default.isPremium (momentFormat (moment ../value.default.isPremium "x") "YYYY-MM-DD") else="N/A")}}}{{/compare}},{{{json value=(replace (default ../value.organisation "None") '"' "'")}}},{{{json value=(replace (default ../value.postcode "None") '"' "'")}}}
+{{{json value=../key}}},{{#ifAny (compare accessed null) (compare (momentFormat (moment accessed "x") "YYYY-MM-DD") "2019-06-27")}}Never on current website{{else}}{{{json value=(momentFormat (moment accessed "x") "YYYY-MM-DD")}}}{{/ifAny}},{{#compare @root.data.currentSite.name "default"}}{{#compare ../value.default.isPremium 1}}Permanent{{else}}{{{json value=(if ../value.default.isPremium (momentFormat (moment ../value.default.isPremium "x") "YYYY-MM-DD") else="N/A")}}}{{/compare}},{{/compare}}{{{json value=(replace (default ../value.organisation "None") '"' "'")}}},{{{json value=(replace (default ../value.postcode "None") '"' "'")}}}
 {{/with~}}
 {{~/each~}}
