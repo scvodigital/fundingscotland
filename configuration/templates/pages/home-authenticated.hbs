@@ -87,8 +87,6 @@
     </div>
   {{/compare ~}}
 
-  {{> tfn_latest}}
-
   {{#if @root.data.auth.email}}
     {{#>premium_content}}
       {{#compare @root.data.supplimentaryResponses.recently_viewed.hits.total ">" 0}}
@@ -121,4 +119,6 @@
       {{/compare}}
     {{/premium_content}}
   {{/if}}
+
+  {{> tfn_latest}}
 </div>
