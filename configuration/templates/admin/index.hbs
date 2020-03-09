@@ -210,8 +210,9 @@
               <div class="mdc-layout-grid t-margin-full">
                 <div class="mdc-layout-grid__inner equal-height" style="align-items: center;">
                   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6">
-                    {{>textbox id="expiry" leadingIcon="fas fa-calendar" label="Premium expiry" type="date"
-                        value=(if (getProperty @root.data.userProfile (concat @root.data.currentSite.name ".isPremium")) (momentFormat (moment (getProperty @root.data.userProfile (concat @root.data.currentSite.name ".isPremium")) "x") "YYYY-MM-DD") else="")}}
+                    {{!-- {{>textbox id="expiry" leadingIcon="fas fa-calendar" label="Premium expiry" type="date"
+                        value=(if (getProperty @root.data.userProfile (concat @root.data.currentSite.name ".isPremium")) (momentFormat (moment (getProperty @root.data.userProfile (concat @root.data.currentSite.name ".isPremium")) "x") "YYYY-MM-DD") else="")}} --}}
+                    {{>checkbox id="expiry" name="expiry" label="Premium" value="1" checked=(if (getProperty @root.data.userProfile (concat @root.data.currentSite.name ".isPremium")) true else=false)}}
                   </div>
                   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6">
                     <input type="hidden" name="uid" value="{{@root.data.userAuth.uid}}">
