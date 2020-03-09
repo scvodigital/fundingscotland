@@ -231,6 +231,12 @@
                     iconClasses=(if (if @root.data.auth.photoURL false else=true) "far fa-fw fa-user-circle" else=false)
                     buttonLabel="My account"
                     arrowClasses="far fa-fw fa-angle-down"}}
+                    {{#if @root.data.profile.isAdmin ~}}
+                      <a class="mdc-list-item" href="/admin" role="menuitem">
+                        <span class="far fa-shield mdc-list-item__graphic" aria-hidden="true"></span>
+                        Admin
+                      </a>
+                    {{/if ~}}
                   {{#each @root.context.metaData.menus.user-signed-in ~}}
                     <a class="mdc-list-item {{#if (regexMatch @root.request.url.pathname route "gi")}} mdc-list-item--activated{{/if}}" href="{{stripTrailingSlash path}}" role="menuitem">
                       {{#if icon ~}}
@@ -239,12 +245,6 @@
                       {{{label}}}
                     </a>
                   {{/each ~}}
-                  {{#if @root.data.profile.isAdmin}}
-                    <a class="mdc-list-item" href="/site-admin/export" role="menuitem">
-                      <span class="far fa-file-export mdc-list-item__graphic" aria-hidden="true"></span>
-                      Export user data
-                    </a>
-                  {{/if}}
                 {{/components_anchored_menu}}
               {{/if ~}}
             </section>
