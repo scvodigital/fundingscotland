@@ -48,7 +48,11 @@
               <!-- <p>
               <strong> TO UPDATE: </strong> To start searching for funding you must register or login. The terms and conditions and privacy policy are here. Please fill in the forms below to get started. You can unsubscribe at any time.
               </p> -->
+              {{#if @root.data.currentSite.live ~}}
               {{> account_sign_up}}
+              {{else}}
+              {{> test_warning}}
+              {{/if ~}}
             </div>
           </div>
         </div>

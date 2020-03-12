@@ -1,5 +1,9 @@
 <div class="sign-in-form t-padding-full mdc-theme--surface">
   <div class="mdc-card mdc-elevation--z0">
+    {{#if @root.data.currentSite.live ~}}
     {{> account_sign_in}}
+    {{else}}
+    {{> test_warning}}
+    {{/if ~}}
   </div>
 </div>
