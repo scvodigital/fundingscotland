@@ -42,10 +42,15 @@ $mdc-theme-tfn-light: lighten($mdc-theme-tfn, 15%);
 $mdc-theme-tfn-dark: darken($mdc-theme-tfn, 15%);
 
 $primary-color: #FF595A;
+$primary-color-light: #ffd6d6;
+$primary-color-dark: #C5143D;
 $secondary-color: #244B5A;
+$secondary-color-light: lighten($secondary-color, 10%) !default;
 $secondary-color-dark: darken($secondary-color, 10%) !default;
+$yellow-color: #FFDB00;
 
 $unit: 1rem;
+$padding: 1.2rem;
 $thick-line: 5px;
 $transition-speed: 0.3s;
 
@@ -218,7 +223,7 @@ body {
 //   position: relative;
 // }
 .mdc-top-app-bar-fixed-adjust {
-  margin-top: 138px;
+  margin-top: 218px;
 }
 .top-bar-stuck {
   top: 0;
@@ -1041,6 +1046,31 @@ a.mdc-drawer__content-heading {
   }
 }
 
+a.bg-yellow {
+  background: $yellow-color !important;
+  border: none;
+  display: block;
+  color: $secondary-color;
+  .columns {
+    margin-left: -($padding/2);
+    margin-right: -($padding/2);
+    .column {
+      padding-left: $padding/2;
+      padding-right: $padding/2;
+    }
+  }
+}
+a.bg-yellow:hover {
+  text-decoration: none;
+  h2,
+  h3,
+  .fa-fw,
+  .link-hover {
+    color: $primary-color-dark;
+    text-decoration: none;
+  }
+}
+
 // Lists =======================================================================
 footer,
 .browse main,
@@ -1316,7 +1346,7 @@ footer.mdc-layout__footer {
     padding-left: $unit !important;
   }
   .mdc-top-app-bar-fixed-adjust {
-    margin-top: 64px;
+    margin-top: 144px;
   }
   .header-banner {
     height: 150px !important;

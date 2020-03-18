@@ -55,7 +55,7 @@ export class FundingScotland {
     // Headroom
     var header = document.querySelector("header.top-bar-stuck");
     this.headroom  = new Headroom(header, {
-      "offset": 176,
+      "offset": 218,
       "tolerance": 5
     });
     this.headroom.init();
