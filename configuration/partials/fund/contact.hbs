@@ -2,8 +2,8 @@
   <div class="detailed-info">
     {{#if @root.data.auth ~}}
 
-      {{#ifAny fund_email_address fund_telephone url~}}
-        <h4 class="mdc-typography--headline7">Fund Contact Information</h4>
+      {{#ifAny fund_email_address fund_telephone fund_url ~}}
+        <h4 class="mdc-typography--headline7">More information on this fund</h4>
         <ul class="fa-ul first">
 
         {{#if fund_url ~}}
@@ -31,8 +31,8 @@
           </li>
         {{/if}}
       </ul>
-      {{/ifAny}}
-      <h4 class="mdc-typography--headline7">Funder Details</h4>
+      {{/ifAny ~}}
+      <h4 class="mdc-typography--headline7">Funder details</h4>
       {{> funder_charity_number charity_number=funder_organisation.charity_number}}
       <ul class="fa-ul first">
       {{#if funder_organisation.address ~}}
