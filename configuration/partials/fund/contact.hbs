@@ -35,11 +35,13 @@
       <h4 class="mdc-typography--headline7">Funder details</h4>
       {{> funder_charity_number charity_number=funder_organisation.charity_number}}
       <ul class="fa-ul first">
-      {{#if funder_organisation.address ~}}
+      {{#if (itemAt (split funder_organisation.address ",") 0) ~}}
         <li class="mdc-typography--body1">
           <span class="fa-li"><span class="far fa-building fa-fw" title="Address"></span></span>
           <span class="key-info-bit r-margin-full">
-            {{replace funder_organisation.address ", , " ", "}}
+            {{#each (split funder_organisation.address ",") ~}}
+            {{#if (trim this)}}{{trim this}}{{#unless @last}}, {{/unless}}{{/if}}
+            {{/each ~}}
           </span>
         </li>
       {{/if ~}}
