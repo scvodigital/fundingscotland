@@ -179,7 +179,7 @@
 
     <div class="mdc-typography--body2 last-modified t-margin">
       <span class="far fa-calendar-alt" aria-hidden="true"></span>
-      <span title="Last reviewed {{date_last_modified}}">Last reviewed {{momentFromNow date_last_modified}}</span>
+      <span title="Fund last reviewed: {{momentFormat (moment date_last_modified 'x') 'YYYY-MM-DD HH:mm'}}">Last reviewed {{momentFromNow date_last_modified}}</span>
     </div>
     {{else}}
     {{#if description ~}}
