@@ -7,7 +7,6 @@
     "title",
     "alias",
     "description",
-    "goodhq_organisation",
     "geo_organisation_coords",
     "postcode",
     "has_logo",
