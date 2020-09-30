@@ -5,6 +5,8 @@
   {{{layoutParts.head}}}
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  {{!-- <link rel="canonical" href="https://funding.scot{{request.params.uri.pathname}}" /> --}}
+
   <!--
 
   Powered by:
@@ -15,7 +17,7 @@
   ███████║╚██████╗ ╚████╔╝ ╚██████╔╝ ██╔╝  ██║  ██║╚██████╔╝╚██████╔╝   ██║   ███████╗██║  ██║
   ╚══════╝ ╚═════╝  ╚═══╝   ╚═════╝ ╚═╝   ╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═╝
 
-  - - >
+  -->
 
   <link rel="apple-touch-icon" sizes="180x180" href="{{~>asset_url url='images/icons/apple-touch-icon.png'~}}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{~>asset_url url='images/icons/favicon-32x32.png'~}}">
@@ -27,28 +29,6 @@
   <meta name="msapplication-config" content="{{~>asset_url url='images/icons/browserconfig.xml'~}}">
   <meta name="theme-color" content="#244B5A">
 
-  <!-- -->
-
-  <link rel="apple-touch-icon" sizes="57x57" href="{{~>asset_url url='images/icons/apple-icon-57x57.png'~}}">
-  <link rel="apple-touch-icon" sizes="60x60" href="{{~>asset_url url='images/icons/apple-icon-60x60.png'~}}">
-  <link rel="apple-touch-icon" sizes="72x72" href="{{~>asset_url url='images/icons/apple-icon-72x72.png'~}}">
-  <link rel="apple-touch-icon" sizes="76x76" href="{{~>asset_url url='images/icons/apple-icon-76x76.png'~}}">
-  <link rel="apple-touch-icon" sizes="114x114" href="{{~>asset_url url='images/icons/apple-icon-114x114.png'~}}">
-  <link rel="apple-touch-icon" sizes="120x120" href="{{~>asset_url url='images/icons/apple-icon-120x120.png'~}}">
-  <link rel="apple-touch-icon" sizes="144x144" href="{{~>asset_url url='images/icons/apple-icon-144x144.png'~}}">
-  <link rel="apple-touch-icon" sizes="152x152" href="{{~>asset_url url='images/icons/apple-icon-152x152.png'~}}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{~>asset_url url='images/icons/apple-icon-180x180.png'~}}">
-  <link rel="icon" type="image/png" sizes="192x192" href="{{~>asset_url url='images/icons/android-icon-192x192.png'~}}">
-  <link rel="icon" type="image/png" sizes="512x512" href="{{~>asset_url url='images/icons/android-icon-192x192.png'~}}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{~>asset_url url='images/icons/favicon-32x32.png'~}}">
-  <link rel="icon" type="image/png" sizes="96x96" href="{{~>asset_url url='images/icons/favicon-96x96.png'~}}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{~>asset_url url='images/icons/favicon-16x16.png'~}}">
-  <link rel="manifest" href="{{~>asset_url url='images/icons/manifest.json'~}}">
-  <meta name="msapplication-TileColor" content="#C2185B">
-  <meta name="msapplication-TileImage" content="{{~>asset_url url='images/icons/ms-icon-144x144.png'~}}">
-  <meta name="theme-color" content="#C2185B">
-
-  {{!-- <link rel="canonical" href="https://fundingscotland.com{{request.params.uri.pathname}}" /> --}}
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -75,14 +55,50 @@
 
   <link type="text/css" rel="stylesheet" href="{{~>asset_url url='libraries/fontawesome-pro/css/all.min.css'~}}">
 
+  <style type="text/css">
+  @font-face {
+  font-family: 'Asap';
+  src: url('{{~>asset_url url='fonts/Asap-Bold.eot'~}}');
+  src: url('{{~>asset_url url='fonts/Asap-Bold.eot?#iefix'~}}') format('embedded-opentype'),
+       url('{{~>asset_url url='fonts/Asap-Bold.woff2'~}}') format('woff2'),
+       url('{{~>asset_url url='fonts/Asap-Bold.woff'~}}') format('woff'),
+       url('{{~>asset_url url='fonts/Asap-Bold.ttf'~}}') format('truetype'),
+       url('{{~>asset_url url='fonts/Asap-Bold.svg#Asap-Bold'~}}') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  }
+  @font-face {
+  font-family: 'Ingra';
+  src: url('{{~>asset_url url='fonts/IngraSCVO-Regular.eot'~}}');
+  src: url('{{~>asset_url url='fonts/IngraSCVO-Regular.eot?#iefix'~}}') format('embedded-opentype'),
+       url('{{~>asset_url url='fonts/IngraSCVO-Regular.woff2'~}}') format('woff2'),
+       url('{{~>asset_url url='fonts/IngraSCVO-Regular.woff'~}}') format('woff'),
+       url('{{~>asset_url url='fonts/IngraSCVO-Regular.ttf'~}}') format('truetype'),
+       url('{{~>asset_url url='fonts/IngraSCVO-Regular.svg#IngraSCVO-Regular'~}}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  }
+  @font-face {
+  font-family: 'Ingra';
+  src: url('{{~>asset_url url='fonts/IngraSCVO-SemiBold.eot'~}}');
+  src: url('{{~>asset_url url='fonts/IngraSCVO-SemiBold.eot?#iefix'~}}') format('embedded-opentype'),
+       url('{{~>asset_url url='fonts/IngraSCVO-SemiBold.woff2'~}}') format('woff2'),
+       url('{{~>asset_url url='fonts/IngraSCVO-SemiBold.woff'~}}') format('woff'),
+       url('{{~>asset_url url='fonts/IngraSCVO-SemiBold.ttf'~}}') format('truetype'),
+       url('{{~>asset_url url='fonts/IngraSCVO-SemiBold.svg#IngraSCVO-SemiBold'~}}') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  }
+  </style>
+
   <link type="text/css" rel="stylesheet" href="{{~>asset_url url=(concat 'sub-sites/all/main.css')~}}">
   <link type="text/css" rel="stylesheet" href="{{~>asset_url url=(concat 'sub-sites/' @root.data.currentSite.name '/main.css')~}}">
 </head>
-<body class="mdc-theme--footer-dark-bg">
+<body class="mdc-theme--footer-dark-bg {{#if request.params.path}}{{replace request.params.path '_' ' '}}{{else}}home{{/if}}">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJQ3FN"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <fundingscotland-site>
     <div class="mdc-typography">
       {{#ifAny request.params.query.debug (contains request.url.hostname ".local") ~}}
@@ -110,16 +126,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <header class="mdc-top-app-bar mdc-elevation--z5 top-bar-stuck" id="top-bar">
         <div class="container-fluid">
-          {{!-- <div class="mdc-top-app-bar__row mdc-top-app-bar__lower scvo-tab-bar">
+          <div class="mdc-top-app-bar__row mdc-top-app-bar__lower scvo-tab-bar hide-sm hide-md">
             <section class="mdc-top-app-bar__row mdc-top-app-bar__section--align-start">
               {{> components_scvo_bar}}
             </section>
-          </div> --}}
+          </div>
+          {{> layout_covid_19}}
           <div class="mdc-top-app-bar__row mdc-top-app-bar__upper">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start mdc-top-app-bar__section--logo">
               <a href="https://scvo.org">
-                <!-- <img src="{{~>asset_url url='images/logos/scvo-white.svg'~}}" alt="Scottish Council for Voluntary Organisations" /> -->
-                <img src="{{~>asset_url url='images/logos/scvo-legacy-white.png'~}}" alt="Scottish Council for Voluntary Organisations" />
+                <img src="{{~>asset_url url='images/logos/scvo-white.svg'~}}" alt="Scottish Council for Voluntary Organisations" />
+                {{!-- <!-- <img src="{{~>asset_url url='images/logos/scvo-legacy-white.png'~}}" alt="Scottish Council for Voluntary Organisations" /> --> --}}
               </a>
             </section>
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start mdc-top-app-bar__section--name">
@@ -127,7 +144,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 {{@root.data.currentSite.title}}
                 {{#ifAll @root.data.auth (compare @root.data.currentSite.name "===" "default") ~}}
                 {{#>premium_content}}
-                <span class="mdc-typography--caption" title="Premium expiry: {{momentFormat (moment (getProperty @root.data.profile (concat @root.data.currentSite.name ".isPremium")) 'x') 'YYYY-MM-DD'}}">
+                <span class="mdc-typography--caption">
                   Premium
                 </span>
                 {{/premium_content}}
@@ -150,7 +167,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <i class="far mdc-chip__icon fa-circle"></i>
                   {{/premium_content_alt}}
                   <div class="mdc-chip__text">
-                    Premium user
+                    Premium features
                   </div>
                 </a>
               </div>
@@ -216,6 +233,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     iconClasses=(if (if @root.data.auth.photoURL false else=true) "far fa-fw fa-user-circle" else=false)
                     buttonLabel="My account"
                     arrowClasses="far fa-fw fa-angle-down"}}
+                    {{#if @root.data.profile.isAdmin ~}}
+                      <a class="mdc-list-item" href="/admin" role="menuitem">
+                        <span class="far fa-shield mdc-list-item__graphic" aria-hidden="true"></span>
+                        Admin
+                      </a>
+                    {{/if ~}}
                   {{#each @root.context.metaData.menus.user-signed-in ~}}
                     <a class="mdc-list-item {{#if (regexMatch @root.request.url.pathname route "gi")}} mdc-list-item--activated{{/if}}" href="{{stripTrailingSlash path}}" role="menuitem">
                       {{#if icon ~}}
@@ -224,12 +247,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                       {{{label}}}
                     </a>
                   {{/each ~}}
-                  {{#if @root.data.profile.isAdmin}}
-                    <a class="mdc-list-item" href="/site-admin/export" role="menuitem">
-                      <span class="far fa-file-export mdc-list-item__graphic" aria-hidden="true"></span>
-                      Export user data
-                    </a>
-                  {{/if}}
                 {{/components_anchored_menu}}
               {{/if ~}}
             </section>
@@ -374,6 +391,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <h3>Information</h3>
                   <ul class="mdc-list">
                     <li class="mdc-list-item">
+                      <a href="/accessibility">Accessibility</a>
+                    </li>
+                    <li class="mdc-list-item">
                       <a href="/terms">Terms &amp; conditions</a>
                     </li>
                     <li class="mdc-list-item">
@@ -387,15 +407,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone about">
                   <h3>About</h3>
                   <p class="b-margin">
-                    <strong>{{@root.data.currentSite.title}}</strong> lists funders with a track record of supporting projects {{#compare @root.data.currentSite.name "default"}}in Scotland{{else}}{{@root.data.currentSite.fundingArea}}{{/compare}} and is run by the <a href="https://scvo.org">Scottish Council for Voluntary Organisations</a>{{#if @root.data.currentSite.live}}{{#compare @root.data.currentSite.name "!==" "default"}} in partnership with <a href="{{@root.data.currentSite.organisationWebsite}}">{{@root.data.currentSite.organisationName}}</a> as part of <a href="https://fundingscotland.com">Funding Scotland</a>{{/compare}}{{/if}}. <a href="/about">Find out more</a>
+                    {{@root.data.currentSite.title}} lists funders with a track record of supporting projects {{#compare @root.data.currentSite.name "default"}}in Scotland{{else}}{{@root.data.currentSite.fundingArea}}{{/compare}} and is run by the <a href="https://scvo.org">Scottish Council for Voluntary Organisations</a>{{#if @root.data.currentSite.live}}{{#compare @root.data.currentSite.name "!==" "default"}} in partnership with <a href="{{@root.data.currentSite.organisationWebsite}}">{{@root.data.currentSite.organisationName}}</a> as part of <a href="https://fundingscotland.com">Funding Scotland</a>{{/compare}}{{/if}}.
+                    <a href="/about">Find out more</a>
                   </p>
-                  {{#ifAll @root.data.auth (compare @root.data.currentSite.name "===" "default") ~}}
+                  {{!-- {{#ifAll @root.data.auth (compare @root.data.currentSite.name "===" "default") ~}}
                   {{#>premium_content}}
                   <p>
                     Your premium subscription is active until the {{momentFormat (moment (getProperty @root.data.profile (concat @root.data.currentSite.name ".isPremium")) 'x') 'Do \o\f MMMM, YYYY'}}.
                   </p>
                   {{/premium_content}}
-                  {{/ifAll ~}}
+                  {{/ifAll ~}} --}}
                 </div>
               </div>
             </div>
@@ -413,8 +434,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
                 <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-4-phone">
                   <a href="https://scvo.org" class="brand-logo" title="Scottish Council for Voluntary Organisations">
-                    <!-- <img src="{{~>asset_url url='images/logos/scvo-secondary.svg'~}}" alt="Scottish Council for Voluntary Organisations" /> -->
-                    <img src="{{~>asset_url url='images/logos/scvo-legacy-black.png'~}}" alt="Scottish Council for Voluntary Organisations" />
+                    <img src="{{~>asset_url url='images/logos/scvo-white.svg'~}}" alt="Scottish Council for Voluntary Organisations" />
+                    {{!-- <img src="{{~>asset_url url='images/logos/scvo-legacy-black.png'~}}" alt="Scottish Council for Voluntary Organisations" /> --}}
                   </a>
                 </div>
               </div>

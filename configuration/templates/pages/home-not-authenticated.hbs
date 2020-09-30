@@ -32,12 +32,13 @@
             {{#compare @root.data.currentSite.name "default" ~}}
             <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
               {{#>premium_content_alt}}
-              <div class="mdc-typography--headline5">Go premium</div>
+              {{!-- <div class="mdc-typography--headline5">Go premium</div> --}}
               <p>
-                To see what is available, <a href="/search">search for funds</a>. To see full fund details and more than one page of results, please <a href="/sign-up">sign up</a> or <a href="/sign-in">sign in</a>. For additional features such as email alerts, adding notes to your funds, and more, <a href="/premium">go premium</a>.
+                To see what is available, <a href="/search">search for funds</a>. To see full fund details and more than one page of results, please <a href="/sign-up">sign up</a> or <a href="/sign-in">sign in</a>.
+                {{!-- For additional features such as email alerts, adding notes to your funds, and more, <a href="/premium">go premium</a>. --}}
               </p>
               {{/premium_content_alt}}
-              <div class="mdc-typography--headline5">Go local</div>
+              {{!-- <div class="mdc-typography--headline5">Go local</div> --}}
               <p>
                 We've teamed up with a number of other organisations to provide premium features for funding searches in specific local areas:
               </p>
@@ -48,7 +49,11 @@
               <!-- <p>
               <strong> TO UPDATE: </strong> To start searching for funding you must register or login. The terms and conditions and privacy policy are here. Please fill in the forms below to get started. You can unsubscribe at any time.
               </p> -->
+              {{#if @root.data.currentSite.live ~}}
               {{> account_sign_up}}
+              {{else}}
+              {{> test_warning}}
+              {{/if ~}}
             </div>
           </div>
         </div>
@@ -105,7 +110,5 @@
 
     </div>
   </div>
-  <div class="home-info h-padding-full">
-    {{> tfn_latest}}
-  </div>
+  {{> tfn_latest}}
 </div>

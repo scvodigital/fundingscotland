@@ -1,6 +1,6 @@
 {
   "name": "premium",
-  "pattern": "/premium",
+  "pattern": "_LEGACY_/premium",
   "debug": false,
   "metaData": {
     "hideSearch": true

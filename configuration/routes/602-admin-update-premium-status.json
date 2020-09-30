@@ -33,7 +33,7 @@
       "config": {
         "output": "data",
         "parseJson": false,
-        "template": "{{#if @root.request.body.expiry}}{{momentFormat (moment @root.request.body.expiry 'YYYY-MM-DD') 'x'}}{{else}}{}{{/if}}"
+        "template": "{{#if @root.request.body.premium_on}}1{{else}}{}{{/if}}"
       }
     },
     {

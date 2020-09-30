@@ -1,6 +1,6 @@
 {
-  "name": "site_admin_export",
-  "pattern": "/site-admin/export",
+  "name": "admin_export",
+  "pattern": "/admin/export",
   "debug": true,
   "tasks": [
     "context.metaData.commonTasks.currentSite",
@@ -53,7 +53,7 @@
       "taskModule": "render",
       "renderer": "handlebars",
       "config": {
-        "template": ">context.metaData.handlebars.templates.site-admin_export",
+        "template": ">context.metaData.handlebars.templates.admin_export",
         "output": "body",
         "filename": "{{@root.data.currentSite.name}}_user-export_{{momentFormat (moment (dateMath 'now') 'x') 'YYYY-MM-DD-HH-mm-ss'}}.csv",
         "contentType": "text/csv"

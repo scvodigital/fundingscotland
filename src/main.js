@@ -54,15 +54,15 @@ export class FundingScotland {
 
     // Headroom
     var header = document.querySelector("header.top-bar-stuck");
-    var headroom  = new Headroom(header, {
-      "offset": 100,
+    this.headroom  = new Headroom(header, {
+      "offset": 218,
       "tolerance": 5
     });
-    headroom.init();
+    this.headroom.init();
 
     const ci = new cookieinfo();
     ci.options.message = "We use cookies to track anonymous usage statistics and do not collect any personal information that can be used to identify you. By continuing to visit this site you agree to our use of cookies.";
-    ci.options.fontFamily = "'Open Sans',Helvetica,Arial,sans-serif";
+    ci.options.fontFamily = "'Ingra',Helvetica,Arial,sans-serif";
     ci.options.bg = "#fff";
     ci.options.link = "#448532";
     ci.options.divlink = "#fff";

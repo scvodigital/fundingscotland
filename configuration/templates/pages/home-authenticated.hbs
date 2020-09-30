@@ -1,4 +1,4 @@
-<div class="container-fluid b-padding-full">
+<div class="container-fluid">
   {{> header_search}}
 
   {{#compare @root.data.primaryResponse.all.hits.total ">" 0 ~}}
@@ -32,7 +32,7 @@
       {{/if ~}}
     {{/premium_content}}
 
-    {{#ifAll @root.data.searches.items.[0] (compare @root.data.primaryResponse.personalised.hits.total ">" 0) (ifAny (compare (getProperty @root.data.profile (concat @root.data.currentSite.name ".isPremium")) ">=" (moment null null)) (compare @root.data.currentSite.name "!==" "default")) ~}}
+    {{#ifAll @root.data.searches.items.[0] (compare @root.data.primaryResponse.personalised.hits.total ">" 0) (ifAny (getProperty @root.data.profile (concat @root.data.currentSite.name ".isPremium")) (compare @root.data.currentSite.name "!==" "default")) ~}}
     <div class="mdc-layout-grid home-heading">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
@@ -71,27 +71,21 @@
         </div>
       </div>
     </div>
-    <div class="home-content-primary">
-      {{#>components_horizontal_card_scroller
-        outerClasses="home-latest"
-        scrollLeftIconClasses="fal fa-fw fa-angle-left"
-        scrollRightIconClasses="fal fa-fw fa-angle-right"
-        itemClasses="latest-primary-content latest-primary-content-personalised"
-        items=(map @root.data.primaryResponse.all.hits.hits (getProp "_source"))
-        itemsPartial="fund_mini"
-        moreUrl="/search?sort=date_last_modified&page=2"
-        moreText="Find more funds"}}
-        {{/components_horizontal_card_scroller}}
-    </div>
-  {{/compare ~}}
-
-  <div class="mdc-layout-grid home-heading">
-    <div class="mdc-layout-grid__inner">
-      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-        {{> tfn_latest}}
+    <div class="b-padding-full">
+      <div class="home-content-primary b-padding-full">
+        {{#>components_horizontal_card_scroller
+          outerClasses="home-latest"
+          scrollLeftIconClasses="fal fa-fw fa-angle-left"
+          scrollRightIconClasses="fal fa-fw fa-angle-right"
+          itemClasses="latest-primary-content latest-primary-content-personalised"
+          items=(map @root.data.primaryResponse.all.hits.hits (getProp "_source"))
+          itemsPartial="fund_mini"
+          moreUrl="/search?sort=date_last_modified&page=2"
+          moreText="Find more funds"}}
+          {{/components_horizontal_card_scroller}}
       </div>
     </div>
-  </div>
+  {{/compare ~}}
 
   {{#if @root.data.auth.email}}
     {{#>premium_content}}
@@ -125,4 +119,6 @@
       {{/compare}}
     {{/premium_content}}
   {{/if}}
+
+  {{> tfn_latest}}
 </div>

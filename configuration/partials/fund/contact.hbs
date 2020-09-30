@@ -2,8 +2,8 @@
   <div class="detailed-info">
     {{#if @root.data.auth ~}}
 
-      {{#ifAny fund_email_address fund_telephone url~}}
-        <h4 class="mdc-typography--headline7">Fund Contact Information</h4>
+      {{#ifAny fund_email_address fund_telephone fund_url ~}}
+        <h4 class="mdc-typography--headline7">More information on this fund</h4>
         <ul class="fa-ul first">
 
         {{#if fund_url ~}}
@@ -31,15 +31,17 @@
           </li>
         {{/if}}
       </ul>
-      {{/ifAny}}
-      <h4 class="mdc-typography--headline7">Funder Details</h4>
+      {{/ifAny ~}}
+      <h4 class="mdc-typography--headline7">Funder details</h4>
       {{> funder_charity_number charity_number=funder_organisation.charity_number}}
       <ul class="fa-ul first">
-      {{#if funder_organisation.address ~}}
+      {{#if (itemAt (split funder_organisation.address ",") 0) ~}}
         <li class="mdc-typography--body1">
           <span class="fa-li"><span class="far fa-building fa-fw" title="Address"></span></span>
           <span class="key-info-bit r-margin-full">
-            {{replace funder_organisation.address ", , " ", "}}
+            {{#each (split funder_organisation.address ",") ~}}
+            {{#if (trim this)}}{{trim this}}{{#unless @last}}, {{/unless}}{{/if}}
+            {{/each ~}}
           </span>
         </li>
       {{/if ~}}

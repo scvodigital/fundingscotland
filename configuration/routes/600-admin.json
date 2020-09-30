@@ -33,7 +33,7 @@
       "renderer": "handlebars",
       "config": {
         "output": "data",
-        "template": "{{default request.params.query.email data.auth.email}}"
+        "template": "{{@root.request.params.query.email}}"
       }
     },
     {
@@ -61,8 +61,8 @@
       "config": {
         "connectionName": "notifications",
         "queryTemplates": {
-          "subscriptions": "CALL _getSubscriptions({{{mysqlEscape @root.data.email}}}, NULL, NULL)",
-          "logs": "SELECT * FROM logs WHERE email={{{mysqlEscape @root.data.email}}} AND campaign LIKE 'fs-%'"
+          "subscriptions": "CALL _getSubscriptions({{{mysqlEscape (default @root.data.email 'no-such-profile')}}}, NULL, NULL)",
+          "logs": "SELECT * FROM logs WHERE email={{{mysqlEscape (default @root.data.email 'no-such-profile')}}} AND campaign LIKE 'fs-%'"
         }
       }
     },

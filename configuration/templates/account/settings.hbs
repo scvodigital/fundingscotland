@@ -14,7 +14,8 @@
           Premium
         </h2>
         <p>
-          Your premium account upgrade is active till the {{momentFormat (moment (getProperty @root.data.profile (concat @root.data.currentSite.name ".isPremium")) 'x') 'Do \o\f MMMM, YYYY'}}.
+          Your premium account upgrade is active.
+          {{!-- till the {{momentFormat (moment (getProperty @root.data.profile (concat @root.data.currentSite.name ".isPremium")) 'x') 'Do \o\f MMMM, YYYY'}}. --}}
         </p>
       {{/compare ~}}
     {{/premium_content}}
@@ -30,8 +31,8 @@
               In the weekly bulletin you will receive funding news and updates, and information on any recently opened or updated funds.
             {{/premium_content}}
             {{#>premium_content_alt}}
-              In the weekly bulletin you will receive funding news and updates. With a <a href="/premium">premium account</a> you will also
-              receive information on any recently opened or updated funds
+              In the weekly bulletin you will receive funding news and updates.
+              {{!-- With a <a href="/premium">premium account</a> you will also receive information on any recently opened or updated funds --}}
             {{/premium_content_alt}}
           </p>
           {{#if @root.data.bulletin.items.[0].[0].active}}
@@ -81,16 +82,11 @@
 
   <section class="settings-section settings-email fundingscotland-settings-email">
     <h1 class="mdc-typography--headline4">
-      {{#compare @root.data.currentSite.name "default" ~}}
       Account settings
-      {{else}}
-      Funding Scotland account settings
-      {{/compare ~}}
     </h1>
 
     {{#>help_box permanent=true}}
-      Any changes made to the following settings are applied to your Funding Scotland account across <a href="https://fundingscotland.com/local">all
-      Funding Scotland websites</a>.
+      Any changes made to the following settings are applied to your account across <a href="https://fundingscotland.com/local">all Funding Scotland websites</a>.
     {{/help_box}}
 
     <div class="mdc-layout-grid">
@@ -220,6 +216,26 @@
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
           <h3 class="mdc-typography--headline6 b-margin-full">
+            Your account
+          </h3>
+          <p>
+            You can sign in using your account ({{@root.data.auth.email}}) to the following websites operated by <a href="https://scvo.org">SCVO</a>:
+          </p>
+          <ul>
+            {{#each @root.data.profile}}
+              {{#ifAny accessed notes hidden}}
+                {{#with (getProperty @root.context.metaData.site-configurations @key)}}
+                  <li>
+                    <a href="{{url}}">{{title}}</a>
+                  </li>
+                {{/with}}
+              {{/ifAny}}
+            {{/each}}
+          </ul>
+        </div>
+
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
+          <h3 class="mdc-typography--headline6 b-margin-full">
             Your data
           </h3>
           <p>
@@ -240,11 +256,7 @@
           </h3>
 
           <p>
-            You also have the right to be forgotten by Funding Scotland. Enter your
-            current password and click the button below and all information we hold about you
-            <strong>on all Funding Scotland websites</strong>
-            including your login will be deleted from our servers. The only thing that we will
-            retain are records in our email system letting us know not to email you.
+            You also have the right to be forgotten. Enter your current password and click the button below and all information we hold about you <strong>on all Funding Scotland websites</strong> including your login will be deleted from our servers. The only thing that we will retain are records in our email system letting us know not to email you.
           </p>
           <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
             <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
@@ -259,27 +271,6 @@
             <span class="far fa-trash mdc-list-item__graphic" aria-hidden="true"></span>
             Delete account
           </button>
-        </div>
-
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
-          <h3 class="mdc-typography--headline6 b-margin-full">
-            Funding Scotland websites
-          </h3>
-          <p>
-            You have signed in using this account ({{@root.data.auth.email}}) to the following
-            Funding Scotland websites:
-          </p>
-          <ul>
-            {{#each @root.data.profile}}
-              {{#ifAny accessed notes hidden}}
-                {{#with (getProperty @root.context.metaData.site-configurations @key)}}
-                  <li>
-                    <a href="{{url}}">{{title}}</a>
-                  </li>
-                {{/with}}
-              {{/ifAny}}
-            {{/each}}
-          </ul>
         </div>
       </div>
     </div>

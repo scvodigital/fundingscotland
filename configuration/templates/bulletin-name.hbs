@@ -1,4 +1,1 @@
-{{@root.context.metaData.bulletinCampaignName}}-{{@root.data.currentSite.name}}
-{{~#ifAll (compare @root.data.currentSite.name "default") (compare (getProperty @root.data.profile (concat @root.data.currentSite.name ".isPremium")) ">=" (moment null null)) ~}}
-  -premium
-{{~/ifAll~}}
+{{@root.context.metaData.bulletinCampaignName}}-{{@root.data.currentSite.name}}{{~#ifAll (compare @root.data.currentSite.name "default") (getProperty @root.data.profile (concat @root.data.currentSite.name ".isPremium")) ~}}-premium{{~/ifAll~}}
