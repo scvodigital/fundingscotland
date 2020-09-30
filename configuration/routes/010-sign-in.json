@@ -1,6 +1,6 @@
 {
   "name": "sign_in",
-  "debug": true,
+  "debug": false,
   "pattern": "/sign-in",
   "metaData": {
     "hideSearch": true

@@ -1,6 +1,6 @@
 {
   "name": "update_profile",
-  "debug": true,
+  "debug": false,
   "pattern": "/update-profile",
   "acceptedVerbs": "POST",
   "tasks": [

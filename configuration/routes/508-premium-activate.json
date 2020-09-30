@@ -1,6 +1,6 @@
 {
   "name": "premium_activate",
-  "debug": true,
+  "debug": false,
   "pattern": "/activate-premium",
   "tasks": [
     "context.metaData.commonTasks.currentSite",
