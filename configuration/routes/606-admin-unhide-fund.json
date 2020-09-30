@@ -1,7 +1,7 @@
 {
   "name": "admin_unhide_fund",
   "pattern": "/admin/unhide-fund",
-  "debug": true,
+  "debug": false,
   "tasks": [
     "context.metaData.commonTasks.currentSite",
     "context.metaData.commonTasks.authRequired",

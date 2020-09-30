@@ -1,7 +1,7 @@
 {
   "name": "admin_update_premium_status",
   "pattern": "/admin/update-premium-status",
-  "debug": true,
+  "debug": false,
   "tasks": [
     "context.metaData.commonTasks.currentSite",
     "context.metaData.commonTasks.authRequired",
