@@ -641,10 +641,6 @@ a:hover {
   color: $mdc-theme-primary-dark;
 }
 
-.tfn a {
-  color: $mdc-theme-secondary;
-}
-
 .mdc-chip,
 .mdc-chip .mdc-chip__icon--leading {
   background-color: $mdc-theme-primary;
@@ -1122,19 +1118,12 @@ footer,
   }
 }
 
-.home .tfn-latest {
-  background-color: $mdc-theme-tfn;
+.tfn-latest {
   .mdc-layout-grid__inner {
     grid-gap: 2.4rem;
   }
   .card {
     width: 100%;
-  }
-  a,
-  p,
-  h4,
-  .mdc-typography--headline5 {
-    color: $secondary-color;
   }
   .mdc-typography--headline5 img {
     max-width: 175px;
@@ -1144,16 +1133,28 @@ footer,
   }
   .card-image-link:hover .card-title,
   a:hover {
-    color: $secondary-color-light;
     text-decoration: none;
+  }
+  .card-image-link .card-image:after {
+    background-image: none;
+  }
+}
+.home .tfn-latest {
+  background-color: $mdc-theme-tfn;
+  a,
+  p,
+  h4,
+  .mdc-typography--headline5 {
+    color: $secondary-color;
+  }
+  .card-image-link:hover .card-title,
+  a:hover {
+    color: $secondary-color-light;
   }
   .gist {
     .mdc-card__subtitle {
       color: $secondary-color;
     }
-  }
-  .card-image-link .card-image:after {
-    background-image: none;
   }
 }
 
