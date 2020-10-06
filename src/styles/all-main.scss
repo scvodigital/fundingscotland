@@ -1131,10 +1131,6 @@ footer,
     display: inline-block;
     margin-right: $unit;
   }
-  .card-image-link:hover .card-title,
-  a:hover {
-    text-decoration: none;
-  }
   .card-image-link .card-image:after {
     background-image: none;
   }
@@ -1150,6 +1146,7 @@ footer,
   .card-image-link:hover .card-title,
   a:hover {
     color: $secondary-color-light;
+    text-decoration: none;
   }
   .gist {
     .mdc-card__subtitle {
