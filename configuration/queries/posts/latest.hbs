@@ -34,16 +34,14 @@
                   {{#compare @root.data.currentSite.name "!==" "default"}}
                     "fs-post-{{@root.data.currentSite.name}}",
                   {{/compare}}
-                  "fs-post-default",
-                  "tfn-legacy-post-news",
-                  "tfn-legacy-feature"
+                  "fs-post-default"
                 {{/json}}
               {{/json}}
             {{/json}},
             {{#json}}
               {{#json key="terms"}}
                 {{#json key="categories" type="array"}}
-                  "Site news", "Funding & Finance"
+                  "Site news"
                 {{/json}}
               {{/json}}
             {{/json}}
@@ -68,24 +66,6 @@
             {{#json key="publish_on"}}
               {{{json key="scale" value="1d"}}},
               {{{json key="decay" value=0.5}}}
-            {{/json}}
-          {{/json}}
-        {{/json}},
-        {{#json}}
-          {{#json key="filter" type="array"}}
-            {{#json}}
-              {{#json key="terms"}}
-                {{#json key="_type" type="array"}}
-                  "tfn-legacy-post-news",
-                  "tfn-legacy-feature"
-                {{/json}}
-              {{/json}}
-            {{/json}}
-          {{/json}},
-          {{#json key="exp"}}
-            {{#json key="publish_on"}}
-              {{{json key="scale" value="1d"}}},
-              {{{json key="decay" value=0.1}}}
             {{/json}}
           {{/json}}
         {{/json}}

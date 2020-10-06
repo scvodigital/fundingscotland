@@ -1,0 +1,55 @@
+{
+  "size": {{#compare @root.route.name "posts"}}10{{else}}4{{/compare}},
+  "_source": [
+    "title",
+    "site",
+    "path",
+    "image.medium",
+    "d_published"
+  ],
+  "query": {
+    "function_score": {
+      "query": {
+        "bool": {
+          "must": [
+            {
+              "term": {
+                "k_post_status": "publish"
+              }
+            },
+            {
+              "term": {
+                "type": "tfn-post"
+              }
+            },
+            {{!-- {
+              "term": {
+                "term_category.label": "Funding And Finance"
+              }
+            }, --}}
+            {
+              "terms": {
+                "k_post_type": [
+                  "news",
+                  "list",
+                  "feature"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "functions": [
+        {
+          "gauss": {
+            "d_published": {
+              "scale": "3d",
+              "decay": 0.1
+            }
+          }
+        }
+      ],
+      "score_mode": "multiply"
+    }
+  }
+}
