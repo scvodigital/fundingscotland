@@ -37,9 +37,8 @@ $mdc-theme-error: #A9201E;
 $mdc-theme-error-light: lighten($mdc-theme-error, 55%);
 $mdc-theme-error-dark: darken($mdc-theme-error, 15%);
 
-$mdc-theme-tfn: #3b9db1;
-$mdc-theme-tfn-light: lighten($mdc-theme-tfn, 15%);
-$mdc-theme-tfn-dark: darken($mdc-theme-tfn, 15%);
+$mdc-theme-tfn-legacy: #3b9db1;
+$mdc-theme-tfn: #22E5EB;
 
 $primary-color: #FF595A;
 $primary-color-light: #ffd6d6;
@@ -643,7 +642,7 @@ a:hover {
 }
 
 .tfn a {
-  color: $mdc-theme-tfn;
+  color: $mdc-theme-secondary;
 }
 
 .mdc-chip,
@@ -1135,17 +1134,26 @@ footer,
   p,
   h4,
   .mdc-typography--headline5 {
-    color: white;
+    color: $secondary-color;
+  }
+  .mdc-typography--headline5 img {
+    max-width: 175px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: $unit;
   }
   .card-image-link:hover .card-title,
   a:hover {
-    color: $secondary-color-dark;
+    color: $secondary-color-light;
     text-decoration: none;
   }
   .gist {
     .mdc-card__subtitle {
-      color: $mdc-theme-secondary-dark;
+      color: $secondary-color;
     }
+  }
+  .card-image-link .card-image:after {
+    background-image: none;
   }
 }
 

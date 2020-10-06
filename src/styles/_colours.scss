@@ -22,9 +22,7 @@ $colours: (
   error: $mdc-theme-error,
   error-light: $mdc-theme-error-light,
   error-dark: $mdc-theme-error-dark,
-  tfn: $mdc-theme-tfn,
-  tfn-light: $mdc-theme-tfn-light,
-  tfn-dark: $mdc-theme-tfn-dark
+  tfn: $mdc-theme-tfn
 );
 
 @each $name, $colour in $colours {
