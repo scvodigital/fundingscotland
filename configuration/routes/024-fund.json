@@ -116,6 +116,7 @@
               "head": ">context.metaData.handlebars.templates.funds_fund-head-tags",
               "sidebar": ">context.metaData.handlebars.templates.funds_search-form",
               "body": ">context.metaData.handlebars.templates.funds_fund",
+              "bodyLower": ">context.metaData.handlebars.templates.funds_fund-lower",
               "foot": ">context.metaData.handlebars.templates.funds_fund-foot"
             },
             "contentType": "text/html"

@@ -1119,6 +1119,9 @@ footer,
 }
 
 .tfn-latest {
+  background-color: $mdc-theme-tfn;
+  padding: 0 1.5rem 0 !important;
+  margin-bottom: 0;
   .mdc-layout-grid__inner {
     grid-gap: 2.4rem;
   }
@@ -1134,9 +1137,6 @@ footer,
   .card-image-link .card-image:after {
     background-image: none;
   }
-}
-.home .tfn-latest {
-  background-color: $mdc-theme-tfn;
   a,
   p,
   h4,
