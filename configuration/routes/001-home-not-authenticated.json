@@ -1,6 +1,6 @@
 {
   "name": "home_not_authenticated",
-  "debug": true,
+  "debug": false,
   "pattern": "/home-not-authenticated",
   "metaData": {
     "hideSearch": true
