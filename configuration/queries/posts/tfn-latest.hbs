@@ -33,6 +33,11 @@
                 "must_not": [
                   {
                     "term": {
+                      "k_post_status": "trash"
+                    }
+                  },
+                  {
+                    "term": {
                       "visibility.search_hide": {
                         "value": true
                       }
