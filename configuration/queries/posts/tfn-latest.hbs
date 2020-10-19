@@ -73,6 +73,24 @@
                     }
                   }
                 ],
+                "must": [
+                  {
+                    "nested": {
+                      "path": "term_category",
+                      "query": {
+                        "bool": {
+                          "must": [
+                            {
+                              "term": {
+                                "term_category.slug": "funding-and-finance"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ],
                 "must_not": [
                   {
                     "term": {
@@ -112,24 +130,6 @@
                   }
                 ],
                 "minimum_should_match": 1
-              }
-            }
-          ],
-          "must": [
-            {
-              "nested": {
-                "path": "term_category",
-                "query": {
-                  "bool": {
-                    "must": [
-                      {
-                        "term": {
-                          "term_category.slug": "funding-and-finance"
-                        }
-                      }
-                    ]
-                  }
-                }
               }
             }
           ]
