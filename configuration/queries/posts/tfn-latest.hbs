@@ -4,148 +4,136 @@
     "title",
     "site",
     "path",
-    "image.medium",
+    "image",
     "d_published"
   ],
   "query": {
-    "function_score": {
-      "query": {
-        "bool": {
-          "filter": [
-            {
-              "bool": {
-                "filter": [
-                  {
-                    "term": {
-                      "type": "tfn-post"
-                    }
-                  },
-                  {
-                    "terms": {
-                      "k_post_type": [
-                        "news",
-                        "list",
-                        "feature"
-                      ]
-                    }
-                  },
-                  {
-                    "nested": {
-                      "path": "visibility",
-                      "query": {
-                        "bool": {
-                          "must_not": [
-                            {
-                              "term": {
-                                "visibility.search_hide": {
-                                  "value": true
-                                }
-                              }
-                            }
-                          ],
-                          "should": [
-                            {
-                              "bool": {
-                                "must_not": {
-                                  "exists": {
-                                    "field": "visibility.search_range"
-                                  }
-                                }
-                              }
-                            },
-                            {
-                              "bool": {
-                                "filter": [
-                                  {
-                                    "term": {
-                                      "visibility.search_range": {
-                                        "value": "now"
-                                      }
-                                    }
-                                  }
-                                ]
-                              }
-                            }
-                          ],
-                          "minimum_should_match": 1
-                        }
-                      }
-                    }
-                  }
-                ],
-                "must": [
-                  {
-                    "nested": {
-                      "path": "term_category",
-                      "query": {
-                        "bool": {
-                          "must": [
-                            {
-                              "term": {
-                                "term_category.slug": "funding-and-finance"
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  }
-                ],
-                "must_not": [
-                  {
-                    "term": {
-                      "k_post_status": "trash"
-                    }
-                  },
-                  {
-                    "term": {
-                      "visibility.search_hide": {
-                        "value": true
-                      }
-                    }
-                  }
-                ],
-                "should": [
-                  {
+    "bool": {
+      "filter": [
+        {
+          "bool": {
+            "filter": [
+              {
+                "term": {
+                  "type": "tfn-post"
+                }
+              },
+              {
+                "terms": {
+                  "k_post_type": [
+                    "news",
+                    "list",
+                    "feature"
+                  ]
+                }
+              },
+              {
+                "nested": {
+                  "path": "visibility",
+                  "query": {
                     "bool": {
-                      "must_not": {
-                        "exists": {
-                          "field": "visibility.search_range"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "bool": {
-                      "filter": [
+                      "must_not": [
                         {
                           "term": {
-                            "visibility.search_range": {
-                              "value": "now"
+                            "visibility.search_hide": {
+                              "value": true
                             }
+                          }
+                        }
+                      ],
+                      "should": [
+                        {
+                          "bool": {
+                            "must_not": {
+                              "exists": {
+                                "field": "visibility.search_range"
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "bool": {
+                            "filter": [
+                              {
+                                "term": {
+                                  "visibility.search_range": {
+                                    "value": "now"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "minimum_should_match": 1
+                    }
+                  }
+                }
+              }
+            ],
+            "must": [
+              {
+                "nested": {
+                  "path": "term_category",
+                  "query": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "term_category.slug": "funding-and-finance"
                           }
                         }
                       ]
                     }
                   }
-                ],
-                "minimum_should_match": 1
+                }
               }
-            }
-          ]
-        }
-      },
-      "functions": [
-        {
-          "gauss": {
-            "d_published": {
-              "scale": "3d",
-              "decay": 0.1
-            }
+            ],
+            "must_not": [
+              {
+                "term": {
+                  "k_post_status": "trash"
+                }
+              },
+              {
+                "term": {
+                  "visibility.search_hide": {
+                    "value": true
+                  }
+                }
+              }
+            ],
+            "should": [
+              {
+                "bool": {
+                  "must_not": {
+                    "exists": {
+                      "field": "visibility.search_range"
+                    }
+                  }
+                }
+              },
+              {
+                "bool": {
+                  "filter": [
+                    {
+                      "term": {
+                        "visibility.search_range": {
+                          "value": "now"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "minimum_should_match": 1
           }
         }
-      ],
-      "score_mode": "multiply"
+      ]
     }
+  },
+  "sort": {
+    "d_published": "desc"
   }
 }
