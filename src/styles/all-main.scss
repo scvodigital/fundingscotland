@@ -57,7 +57,7 @@ $transition-speed: 0.3s;
 @import "./node_modules/material-components-web/material-components-web.scss";
 @import "./node_modules/@scvo/common/old/common-styles.scss";
 
-$gray-color: #D5D8DC;
+$gray-color: #F0F1F2;
 $secondary-color: #244B5A;
 
 $base-font-family:                  "Ingra", Helvetica, Arial, sans-serif;
@@ -180,7 +180,7 @@ footer.mdc-layout__footer {
   }
   .text-link:hover {
     text-decoration: none;
-    border-bottom: $thick-line solid $secondary-color;
+    // border-bottom: $thick-line solid $secondary-color;
   }
   .brand-logo {
     // margin-left: $unit/4;
