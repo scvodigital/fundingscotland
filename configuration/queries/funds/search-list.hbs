@@ -90,18 +90,16 @@
           {{#unless (contains @root.request.params.query.miscellaneous "hide-open-funds") ~}}
             {{>queries_term field="fund_status_slug" term="open"}},
           {{/unless ~}}
-          {{!-- {{#if (contains @root.request.params.query.miscellaneous "show-opening-soon-funds")}} --}}
-            {{#json}}
-              {{#json key="bool"}}
-                {{#json key="filter" type="array"}}
-                  {{>queries_term field="fund_status_slug" term="currently-closed"}}
-                {{/json}},
-                {{#json key="must" type="array"}}
-                  {{>queries_date_range field="date_reopens" gte="now/d" lte=@root.context.metaData.openingSoonDate}}
-                {{/json}}
+          {{#json}}
+            {{#json key="bool"}}
+              {{#json key="filter" type="array"}}
+                {{>queries_term field="fund_status_slug" term="currently-closed"}}
+              {{/json}},
+              {{#json key="must" type="array"}}
+                {{>queries_date_range field="date_reopens" gte="now/d" lte=@root.context.metaData.openingSoonDate}}
               {{/json}}
-            {{/json}},
-          {{!-- {{/if}} --}}
+            {{/json}}
+          {{/json}},
           {{#if (contains @root.request.params.query.miscellaneous "show-closed-funds")}}
             {{#json}}
               {{#json key="bool"}}
