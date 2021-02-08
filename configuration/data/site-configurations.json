@@ -1275,8 +1275,8 @@
     "fundingArea": "in South Lanarkshire",
     "url": "https://southlanarkshire.fundingscotland.com",
     "logo": "https://storage.googleapis.com/fundingscotland/logos/southlanarkshire.png",
-    "emailLogo": "https://storage.googleapis.com/fundingscotland/email/fs-southlanarkshire-email.png",
-    "headerImage": "https://storage.googleapis.com/fundingscotland/headers/southlanarkshire-orig-crop.jpg",
+    "emailLogo": "https://storage.googleapis.com/fundingscotland/headers/south-lanarkshire-new-header-email.jpg",
+    "headerImage": "https://storage.googleapis.com/fundingscotland/headers/south-lanarkshire-new-header-crop.jpg",
     "colors": {
       "primary": "#244781",
       "primaryText": "#ffffff",
