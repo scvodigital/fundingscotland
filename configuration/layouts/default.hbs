@@ -263,7 +263,7 @@
           <a href="/" class="site-brand--organisation">
             <img src="{{@root.data.currentSite.logo}}" alt="{{@root.data.currentSite.organisationName}}"{{#unless @root.data.currentSite.live}} class="test-logo"{{/unless}} />
           </a>
-          <a href="https://fundingscotland.com" class="site-brand--fundingscotland">
+          <a href="https://funding.scot" class="site-brand--fundingscotland">
             Funding <br />Scotland
           </a>
         </div>
@@ -419,7 +419,7 @@
                 <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone about">
                   <h3>About</h3>
                   <p class="b-margin">
-                    {{@root.data.currentSite.title}} lists funders with a track record of supporting projects {{#compare @root.data.currentSite.name "default"}}in Scotland{{else}}{{@root.data.currentSite.fundingArea}}{{/compare}} and is run by the <a href="https://scvo.scot">Scottish Council for Voluntary Organisations</a>{{#if @root.data.currentSite.live}}{{#compare @root.data.currentSite.name "!==" "default"}} in partnership with <a href="{{@root.data.currentSite.organisationWebsite}}">{{@root.data.currentSite.organisationName}}</a> as part of <a href="https://fundingscotland.com">Funding Scotland</a>{{/compare}}{{/if}}.
+                    {{@root.data.currentSite.title}} lists funders with a track record of supporting projects {{#compare @root.data.currentSite.name "default"}}in Scotland{{else}}{{@root.data.currentSite.fundingArea}}{{/compare}} and is run by the <a href="https://scvo.scot">Scottish Council for Voluntary Organisations</a>{{#if @root.data.currentSite.live}}{{#compare @root.data.currentSite.name "!==" "default"}} in partnership with <a href="{{@root.data.currentSite.organisationWebsite}}">{{@root.data.currentSite.organisationName}}</a> as part of <a href="https://funding.scot">Funding Scotland</a>{{/compare}}{{/if}}.
                     <a href="/about">Find out more</a>
                   </p>
                   {{!-- {{#ifAll @root.data.auth (compare @root.data.currentSite.name "===" "default") ~}}
