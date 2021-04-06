@@ -61,12 +61,14 @@ $gray-color: #F0F1F2;
 $gray-color-light: #F0F1F2;
 $secondary-color: #244B5A;
 
-$goodmoves-color: #537F2C;
+$goodmoves-legacy-legacy-color: rgb(68, 133, 50);
+$goodmoves-legacy-color: #537F2C;
+$goodmoves-color: #B6497D;
 $tfn-legacy-color: #3b9db1;
-$tfn-color: #22E5EB;
+$tfn-color: #bdedee;
 $tfn-color-alt: #00A2BC;
 $fs-legacy-color: #537F2C;
-$fs-color: #537F2C;
+$fs-color: #5BA855;
 
 $base-font-family:                  "Ingra", Helvetica, Arial, sans-serif;
 $heading-font-family:               "Asap", Helvetica, Arial, sans-serif;
@@ -1152,7 +1154,7 @@ footer,
 }
 
 .tfn-latest {
-  background-color: $mdc-theme-tfn;
+  background-color: $tfn-color;
   padding: 0 1.5rem 0 !important;
   margin-bottom: 0;
   .mdc-layout-grid__inner {

@@ -1,3 +1,4 @@
+{{#compare @root.data.currentSite.name "===" "default" ~}}
 {{#withExtend this
     anyNotes=(ifAny (any @root.data.notes_funds.open.hits.hits) (any @root.data.notes_funds.closed.hits.hits))
     anyOpen=(any @root.data.notes_funds.open.hits.hits)
@@ -64,3 +65,4 @@
     {{/premium_content_alt}}
   </div>
 {{/withExtend}}
+{{/compare}}
