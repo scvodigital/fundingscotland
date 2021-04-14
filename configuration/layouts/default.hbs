@@ -29,6 +29,12 @@
   <meta name="msapplication-config" content="{{~>asset_url url='images/icons/browserconfig.xml'~}}">
   <meta name="theme-color" content="#244B5A">
 
+  {{#compare @root.data.currentSite.name "!==" "default"}}
+    {{#if @root.data.currentSite.widget}}
+      <meta http-equiv="refresh" content="0;url={{@root.data.currentSite.widget}}" />
+    {{/if}}
+  {{/compare}}
+
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

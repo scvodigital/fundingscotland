@@ -1311,6 +1311,7 @@
   },
   "stirling": {
     "name": "stirling",
+    "widget": "https://stirling.gov.uk/community-leisure/support-to-communities/community-grants",
     "live": true,
     "title": "Funding Stirling",
     "organisationName": "Stirling Council",
