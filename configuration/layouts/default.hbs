@@ -31,7 +31,9 @@
 
   {{#compare @root.data.currentSite.name "!==" "default"}}
     {{#if @root.data.currentSite.widget}}
-      <meta http-equiv="refresh" content="0;url={{@root.data.currentSite.widget}}" />
+      {{#unless (contains @root.request.url.pathname '/news')}}
+        <meta http-equiv="refresh" content="0;url={{@root.data.currentSite.widget}}" />
+      {{/unless}}
     {{/if}}
   {{/compare}}
 
