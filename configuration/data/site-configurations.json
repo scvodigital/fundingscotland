@@ -1267,6 +1267,7 @@
   },
   "southlanarkshire": {
     "name": "southlanarkshire",
+    "widget": "https://www.southlanarkshire.gov.uk/find-funding",
     "live": true,
     "title": "South Lanarkshire Funding Search",
     "organisationName": "South Lanarkshire Council",
