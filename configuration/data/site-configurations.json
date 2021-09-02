@@ -1044,6 +1044,7 @@
   },
   "perthkinross": {
     "name": "perthkinross",
+    "widget": "https://www.pkleader.org/index.php/match-funding/perth-kinross-funding",
     "live": true,
     "title": "Perth & Kinross Funding Search",
     "organisationProgramme": "Rural Perth & Kinross LEADER",
@@ -1445,6 +1446,7 @@
   },
   "srn": {
     "name": "srn",
+    "widget": "https://www.ruralnetwork.scot/funding/srn-funding-search",
     "live": true,
     "title": "SRN Funding Search",
     "organisationName": "Scottish Rural Network (SRN)",
