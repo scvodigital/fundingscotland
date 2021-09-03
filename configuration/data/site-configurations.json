@@ -604,6 +604,7 @@
   },
   "fife": {
     "name": "fife",
+    "widget": "https://www.fife.gov.uk/kb/docs/articles/council-and-democracy/community-group-support-and-funding/scvo",
     "live": true,
     "title": "Fife Funding Search",
     "organisationName": "Fife Council",
