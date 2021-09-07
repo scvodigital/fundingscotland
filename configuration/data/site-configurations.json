@@ -472,6 +472,7 @@
   },
   "eastrenfrewshire": {
     "name": "eastrenfrewshire",
+    "widget": "https://www.eastrenfrewshire.gov.uk/fs",
     "live": true,
     "title": "East Renfrewshire Funding Search",
     "organisationName": "East Renfrewshire Council",
