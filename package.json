@@ -1,6 +1,6 @@
 {
   "name": "@scvo/fundingscotland",
-  "version": "0.0.81",
+  "version": "0.0.82",
   "description": "Site configuration and assets for fundingscotland.com",
   "main": "index.js",
   "scripts": {
