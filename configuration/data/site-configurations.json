@@ -1182,6 +1182,7 @@
   },
   "shetland": {
     "name": "shetland",
+    "widget": "https://www.shetland.gov.uk/fundingshetland",
     "live": true,
     "title": "Shetland Funding Search",
     "organisationName": "Shetland Islands Council",
