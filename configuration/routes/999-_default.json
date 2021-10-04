@@ -1,6 +1,6 @@
 {
   "name": "_default",
-  "pattern": "/*path",
+  "pattern": "_disabled_/*path",
   "debug": false,
   "metaData": {
     "hideSearch": true

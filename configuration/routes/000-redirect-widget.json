@@ -1,0 +1,25 @@
+{
+  "name": "redirect_widget",
+  "debug": true,
+  "pattern": ["/", "", "/*path"],
+  "tasks": [
+    "context.metaData.commonTasks.currentSite",
+    {
+      "name": "url",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "data",
+        "template": "{{#if @root.data.currentSite.widget}}{{@root.data.currentSite.widget}}{{else}}https://funding.scot{{/if}}"
+      }
+    },
+    {
+      "name": "destination",
+      "taskModule": "redirect",
+      "config": {
+        "location": ">data.url",
+        "statusCode": 301
+      }
+    }
+  ]
+}

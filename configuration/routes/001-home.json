@@ -1,7 +1,7 @@
 {
   "name": "home",
   "debug": false,
-  "pattern": ["/", ""],
+  "pattern": ["_disabled_/", "_disabled_"],
   "metaData": {
     "hideSearch": true
   },

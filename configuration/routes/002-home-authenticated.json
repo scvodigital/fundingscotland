@@ -1,7 +1,7 @@
 {
   "name": "home_authenticated",
-  "debug": false,
-  "pattern": "/",
+  "debug": true,
+  "pattern": "_disabled_/",
   "metaData": {
     "hideSearch": true
   },
