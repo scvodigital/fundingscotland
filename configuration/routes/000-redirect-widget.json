@@ -1,6 +1,6 @@
 {
   "name": "redirect_widget",
-  "debug": true,
+  "debug": false,
   "pattern": ["/", "", "/*path"],
   "tasks": [
     "context.metaData.commonTasks.currentSite",
